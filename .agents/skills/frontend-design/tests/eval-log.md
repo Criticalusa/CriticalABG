@@ -34,3 +34,14 @@
 
 | # | Score | Delta | Keep? | Change Description |
 |---|-------|-------|-------|--------------------|
+| 0 | 2/15 (13%) | — | baseline | Initial state: only A02 (fonts) and A10 (stagger) passing |
+| 1 | 9/15 (60%) | +7 | YES | Added Anti-Patterns section: no transition-all (A01), spring easing (A04), combined transitions (A05), tinted backgrounds (A08), no card nesting (A09), intentional border-radius (A14), section exists (A15) |
+| 2 | 11/15 (73%) | +2 | YES | Added dark mode instruction to Color & Theme (A03) + text color hierarchy (A12) |
+| 3 | 12/15 (80%) | +1 | YES | Added Data & Numbers guideline with tabular-nums (A06) |
+| 4 | 13/15 (87%) | +1 | YES | Added eyebrow→title→content typographic hierarchy pattern (A07) |
+| 5 | 14/15 (93%) | +1 | YES | Added translate+shadow hover pattern to Motion (A11) |
+| 6 | 15/15 (100%) | +1 | YES | Added hairline rules / section separators to Spatial Composition (A13) |
+
+## Final State
+
+**PERFECT SCORE: 15/15 (100%)** — All assertions pass. 6 iterations, 0 reverts.
