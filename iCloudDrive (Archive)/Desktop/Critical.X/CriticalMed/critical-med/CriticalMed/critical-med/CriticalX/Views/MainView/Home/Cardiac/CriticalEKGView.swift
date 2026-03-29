@@ -80,6 +80,10 @@ struct CriticalEKGView: View {
                 OthersRowsMiddleView(section: navSection, row: navRow)
             }
             .navigationViewStyle(.stack)
+            .environment(
+                \.cardiacListRowImage,
+                CardiacHeader.listRowImage(section: navSection, row: navRow)
+            )
         }
         .onAppear {
             withAnimation(.easeOut(duration: 0.4)) {
@@ -367,17 +371,14 @@ struct CardiacFeaturedCard: View {
 
     var body: some View {
         HStack(spacing: CriticalDesign.Spacing.md) {
-            ZStack {
-                Circle()
-                    .fill(iconColor.opacity(0.12))
-                    .frame(width: 50, height: 50)
+            if !item.image.isEmpty, UIImage(named: item.image) != nil {
+                CatalogThumbnailImage(name: item.image, size: 80, cornerRadius: 12)
+            } else {
+                ZStack {
+                    Circle()
+                        .fill(iconColor.opacity(0.12))
+                        .frame(width: 50, height: 50)
 
-                if !item.image.isEmpty {
-                    Image(item.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 32, height: 32)
-                } else {
                     Image(systemName: "heart.fill")
                         .font(.system(size: 20, weight: .medium))
                         .foregroundColor(iconColor)
@@ -453,14 +454,18 @@ struct CardiacListCard: View {
 
     var body: some View {
         HStack(spacing: CriticalDesign.Spacing.md) {
-            ZStack {
-                Circle()
-                    .fill(iconColor.opacity(0.12))
-                    .frame(width: 50, height: 50)
+            if !item.image.isEmpty, UIImage(named: item.image) != nil {
+                CatalogThumbnailImage(name: item.image, size: 80, cornerRadius: 12)
+            } else {
+                ZStack {
+                    Circle()
+                        .fill(iconColor.opacity(0.12))
+                        .frame(width: 50, height: 50)
 
-                Image(systemName: "waveform.path.ecg")
-                    .font(.system(size: 20, weight: .medium))
-                    .foregroundColor(iconColor)
+                    Image(systemName: "waveform.path.ecg")
+                        .font(.system(size: 20, weight: .medium))
+                        .foregroundColor(iconColor)
+                }
             }
 
             VStack(alignment: .leading, spacing: 4) {
