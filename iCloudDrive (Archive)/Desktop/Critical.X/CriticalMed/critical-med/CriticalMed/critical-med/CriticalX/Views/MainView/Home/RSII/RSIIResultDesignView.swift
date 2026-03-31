@@ -115,15 +115,9 @@ private struct RSIMedicationCard: View {
                 }
             }
             .padding(.vertical, 14)
-            .padding(.leading, 20)
+            .padding(.leading, 16)
             .padding(.trailing, 16)
 
-            // Left border accent
-            RoundedRectangle(cornerRadius: 2, style: .continuous)
-                .fill(phaseColor)
-                .frame(width: 3)
-                .padding(.vertical, 10)
-                .frame(maxHeight: .infinity, alignment: .leading)
         }
         .shadow(
             color: colorScheme == .dark
