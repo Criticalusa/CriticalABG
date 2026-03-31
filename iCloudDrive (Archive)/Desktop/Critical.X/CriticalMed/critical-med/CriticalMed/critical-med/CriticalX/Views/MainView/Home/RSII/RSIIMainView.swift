@@ -180,7 +180,7 @@ private struct RSIWeightToggle: View {
                 .padding(.vertical, 7)
                 .background(
                     Capsule()
-                        .fill(active ? accentBlue : Color.clear)
+                        .fill(active ? Color(red: 0.18, green: 0.25, blue: 0.34) : Color.clear)
                 )
         }
         .buttonStyle(.plain)
@@ -288,7 +288,7 @@ private struct RSIShimmerButtonStyle: ButtonStyle {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .fill(
                         LinearGradient(
-                            colors: [accentBlue, accentBlue.opacity(0.75), navyAccent],
+                            colors: [navyAccent, navyAccent.opacity(0.75), navyAccent],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
@@ -318,7 +318,7 @@ private struct RSIShimmerButtonStyle: ButtonStyle {
         .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: configuration.isPressed)
         .shadow(
-            color: accentBlue.opacity(0.4),
+            color: navyAccent.opacity(0.4),
             radius: 10, x: 0, y: 5
         )
         .onAppear {
@@ -707,17 +707,17 @@ struct RSIIMainView: View {
             HStack(spacing: 6) {
                 Image(systemName: "scalemass.fill")
                     .font(.system(size: 10, weight: .semibold))
-                    .foregroundColor(accentBlue.opacity(0.8))
+                    .foregroundColor(navyAccent)
                 Text("Weight-Based Dosing")
                     .font(.custom("Poppins-SemiBold", size: 11))
-                    .foregroundColor(accentBlue.opacity(0.9))
+                    .foregroundColor(navyAccent)
                     .tracking(0.3)
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 5)
             .background(
                 Capsule()
-                    .fill(accentBlue.opacity(colorScheme == .dark ? 0.15 : 0.1))
+                    .fill(navyAccent.opacity(colorScheme == .dark ? 0.15 : 0.1))
             )
 
             Text("Rapid Sequence Intubation")
@@ -743,7 +743,7 @@ struct RSIIMainView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "scalemass.fill")
                             .font(.system(size: 18, weight: .medium))
-                            .foregroundColor(accentBlue)
+                            .foregroundColor(navyAccent)
                         Text("Patient Weight")
                             .font(.custom("Poppins-SemiBold", size: 16))
                             .foregroundColor(textPrimary)
@@ -758,7 +758,7 @@ struct RSIIMainView: View {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
                     TextField(isKg ? "70" : "155", text: $weightField)
                         .font(.system(size: 48, weight: .bold, design: .rounded))
-                        .foregroundColor(accentBlue)
+                        .foregroundColor(navyAccent)
                         .multilineTextAlignment(.leading)
                         .keyboardType(.decimalPad)
                         .focused($focusedField, equals: .weight)
@@ -774,10 +774,10 @@ struct RSIIMainView: View {
                 HStack(spacing: 4) {
                     Image(systemName: "arrow.left.arrow.right")
                         .font(.system(size: 10))
-                        .foregroundColor(accentBlue.opacity(0.6))
+                        .foregroundColor(accentTeal)
                     Text(liveConversionText)
                         .font(.custom("Poppins-Medium", size: 13))
-                        .foregroundColor(accentBlue.opacity(0.7))
+                        .foregroundColor(accentTeal)
                 }
 
                 // Dose preview strip
