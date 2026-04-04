@@ -63,8 +63,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.backgroundColor = darkCanvas
             hostingController.view.backgroundColor = darkCanvas
         } else {
-            window?.backgroundColor = .systemBackground
-            hostingController.view.backgroundColor = .systemBackground
+            window?.backgroundColor = UIColor.systemBackground
+            hostingController.view.backgroundColor = UIColor.systemBackground
         }
         window?.layer.add(transition, forKey: kCATransition)
         window?.rootViewController = hostingController
