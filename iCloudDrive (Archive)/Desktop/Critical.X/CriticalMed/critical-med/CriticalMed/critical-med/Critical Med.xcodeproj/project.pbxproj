@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4E00A072F90000100000007 /* MorphingLabel in Frameworks */ = {isa = PBXBuildFile; productRef = C4E00A042F90000100000004 /* MorphingLabel */; };
+		C4E00A082F90000100000008 /* SSSwiftUIGIFView in Frameworks */ = {isa = PBXBuildFile; productRef = C4E00A052F90000100000005 /* SSSwiftUIGIFView */; };
+		C4E00A092F90000100000009 /* SweeterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C4E00A062F90000100000006 /* SweeterSwift */; };
 		00262EA420B901CE1C6972EA /* Polymorphic_VTach.gif in Resources */ = {isa = PBXBuildFile; fileRef = 78A174CB1E3C9D8FF63964E2 /* Polymorphic_VTach.gif */; };
 		0409CAA7E8C5EFF0DF5D5C2E /* AtrialFib.gif in Resources */ = {isa = PBXBuildFile; fileRef = FF2ED3DB5535D99AD81B56CD /* AtrialFib.gif */; };
 		09ED86E069D82A27B327D776 /* 3rdDegreeHB.gif in Resources */ = {isa = PBXBuildFile; fileRef = 13F8804AA55C3BFB01CD20E3 /* 3rdDegreeHB.gif */; };
@@ -132,12 +135,12 @@
 		202F0B1427E4DFCA00DF26DF /* ScrollViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F0B1327E4DFCA00DF26DF /* ScrollViewProxy.swift */; };
 		203E3D6B28947A0900D280A4 /* CheckUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203E3D6A28947A0900D280A4 /* CheckUpdate.swift */; };
 		203E3D6E2894854100D280A4 /* UpdateFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203E3D6D2894854100D280A4 /* UpdateFeatureView.swift */; };
-		2075D28327D2ABB300185789 /* Calculator.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2075D28227D2ABB300185789 /* Calculator.plist */; };
 		209B7AFB2783AA34006643A4 /* redDotAnimate.json in Resources */ = {isa = PBXBuildFile; fileRef = 209B7AF92783AA34006643A4 /* redDotAnimate.json */; };
 		209B7AFC2783AA34006643A4 /* animateDots.json in Resources */ = {isa = PBXBuildFile; fileRef = 209B7AFA2783AA34006643A4 /* animateDots.json */; };
 		20A9F91527EAC49D0069ECC2 /* NavigationBarColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9F91327EAC49D0069ECC2 /* NavigationBarColorModifier.swift */; };
 		20A9F91627EAC49D0069ECC2 /* NavigationBarTransparentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9F91427EAC49D0069ECC2 /* NavigationBarTransparentStyle.swift */; };
 		20B3D2AF2B6C40000040902E /* RoundTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D2AE2B6C40000040902E /* RoundTabBarView.swift */; };
+		C4ATC00100000001000001 /* AppTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ATC00100000000000001 /* AppTabContainer.swift */; };
 		20BE6F64288EE2660052C086 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE6F63288EE2660052C086 /* FavoritesView.swift */; };
 		20BE6F67288EE2C90052C086 /* FavoriteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE6F66288EE2C90052C086 /* FavoriteMainView.swift */; };
 		20BE6F69288EE3BE0052C086 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE6F68288EE3BE0052C086 /* FavoriteModel.swift */; };
@@ -148,7 +151,6 @@
 		20C5E80B274D5BFE001F7ADF /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20C5E80A274D5BFE001F7ADF /* SF-Pro-Text-Regular.otf */; };
 		20C5E82D27518DC5001F7ADF /* NavigationBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C5E82C27518DC5001F7ADF /* NavigationBarColor.swift */; };
 		20CF458F27EBB279003A54BB /* NavbarToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF458E27EBB279003A54BB /* NavbarToolbarItemView.swift */; };
-		21307A799CCF408E80A80FD0 /* Pods_CriticalX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B871CDA67E8FA03516A7FA7 /* Pods_CriticalX.framework */; };
 		291093CBF5FC785010507B33 /* APIKeyBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB095B5363BF9F91634095E5 /* APIKeyBootstrap.swift */; };
 		441F192C0BABA1AF9CEAD8A0 /* NormalSinus.gif in Resources */ = {isa = PBXBuildFile; fileRef = F3CF7B8AAFCA27B79C5E5011 /* NormalSinus.gif */; };
 		49A12CA52BD3F37E40D5164B /* SinusTachycardia.gif in Resources */ = {isa = PBXBuildFile; fileRef = FF7C5D90B9B614256102DD3C /* SinusTachycardia.gif */; };
@@ -371,9 +373,10 @@
 		C410F23C2B86DCC7008E8B9C /* AnimatedImagesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C410F23B2B86DCC7008E8B9C /* AnimatedImagesGridView.swift */; };
 		C41176DA2F7D807E00115966 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41176D92F7D807E00115966 /* SupabaseConfig.swift */; };
 		C411783F2F801C2900115966 /* WARNINGS_FIX_PROGRESS.md in Resources */ = {isa = PBXBuildFile; fileRef = C411783E2F801C2900115966 /* WARNINGS_FIX_PROGRESS.md */; };
-		C41178412F801C7500115966 /* IMMEDIATE_ACTION_PLAN.md in Resources */ = {isa = PBXBuildFile; fileRef = C41178402F801C7500115966 /* IMMEDIATE_ACTION_PLAN.md */; };
 		C41178432F801CDF00115966 /* SESSION_SUMMARY.md in Resources */ = {isa = PBXBuildFile; fileRef = C41178422F801CDF00115966 /* SESSION_SUMMARY.md */; };
-		C41178452F801CF100115966 /* QUICK_FIX_REFERENCE.md in Resources */ = {isa = PBXBuildFile; fileRef = C41178442F801CF100115966 /* QUICK_FIX_REFERENCE.md */; };
+		C411809F2F802F8E00115966 /* LightModeDesignTestV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C411809E2F802F8E00115966 /* LightModeDesignTestV2.swift */; };
+		C41180A12F8032BA00115966 /* find_duplicate_keys.sh in Resources */ = {isa = PBXBuildFile; fileRef = C41180A02F8032BA00115966 /* find_duplicate_keys.sh */; };
+		C41180A32F8032CD00115966 /* CRASH_FIX_DUPLICATE_KEYS.md in Resources */ = {isa = PBXBuildFile; fileRef = C41180A22F8032CD00115966 /* CRASH_FIX_DUPLICATE_KEYS.md */; };
 		C4145FE02D53FBCB00191D05 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4145FDF2D53FBCB00191D05 /* SignUpView.swift */; };
 		C4145FE22D54665100191D05 /* DrugCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4145FE12D54665100191D05 /* DrugCardView.swift */; };
 		C4145FE42D551B4800191D05 /* CustomHeaderShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4145FE32D551B4800191D05 /* CustomHeaderShapes.swift */; };
@@ -428,6 +431,13 @@
 		C4682E812D4F344F00356282 /* CustomInputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4682E802D4F344F00356282 /* CustomInputFieldView.swift */; };
 		C46980342F50C2FE000232E9 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46980332F50C2FE000232E9 /* TermsView.swift */; };
 		C46980382F50C34F000232E9 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46980372F50C34F000232E9 /* PrivacyView.swift */; };
+		C46A894C2F806283000CE2A1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C46A894B2F806283000CE2A1 /* FirebaseAnalytics */; };
+		C46A894E2F806283000CE2A1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C46A894D2F806283000CE2A1 /* FirebaseAuth */; };
+		C46A89502F806283000CE2A1 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = C46A894F2F806283000CE2A1 /* FirebaseCore */; };
+		C46A89522F806283000CE2A1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C46A89512F806283000CE2A1 /* FirebaseCrashlytics */; };
+		C46A89542F806283000CE2A1 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C46A89532F806283000CE2A1 /* FirebaseDatabase */; };
+		C46A89572F8062F9000CE2A1 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C46A89562F8062F9000CE2A1 /* GoogleSignIn */; };
+		C46A89592F8062F9000CE2A1 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C46A89582F8062F9000CE2A1 /* GoogleSignInSwift */; };
 		C4700BA52F1F02A400480D26 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4700BA42F1F02A400480D26 /* AIService.swift */; };
 		C4700BBE2F1FC26600480D26 /* CoagsInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4700BBD2F1FC26600480D26 /* CoagsInterpreter.swift */; };
 		C4715AFE2F0EC781006F47BB /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4715AFA2F0EC781006F47BB /* NewsService.swift */; };
@@ -657,6 +667,7 @@
 		CE4D1DD22EE99D7C002AEF1B /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D1DD02EE99D7C002AEF1B /* SubscriptionManager.swift */; };
 		CE4D1DD42EEA06CB002AEF1B /* configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CE4D1DD32EEA06CB002AEF1B /* configuration.storekit */; };
 		CEEF429E2ED68614003BEA54 /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF429D2ED68614003BEA54 /* TrackableScrollView.swift */; };
+		CLCALC0001000000000001 /* ClinicalCalculatorMoments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CLCALC0001000000000002 /* ClinicalCalculatorMoments.swift */; };
 		CVBR00020B0000000000D2D2 /* DrugRecord+ViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CVBR00010A0000000000D1D1 /* DrugRecord+ViewBridge.swift */; };
 		CVER00020B0000000000B2B2 /* ContentSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CVER00010A0000000000A2A2 /* ContentSyncService.swift */; };
 		CVER00020B0000000000B3B3 /* DrugRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CVER00010A0000000000A3A3 /* DrugRepository.swift */; };
@@ -680,7 +691,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B871CDA67E8FA03516A7FA7 /* Pods_CriticalX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CriticalX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13698BB62785887C004E4174 /* Procedure&ImagingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Procedure&ImagingMainView.swift"; sourceTree = "<group>"; };
 		13698BB827858CDE004E4174 /* ProceduresandImagingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProceduresandImagingDataModel.swift; sourceTree = "<group>"; };
 		13698BBC2785B6F5004E4174 /* UltrasonographyMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltrasonographyMainView.swift; sourceTree = "<group>"; };
@@ -801,12 +811,12 @@
 		202F0B1327E4DFCA00DF26DF /* ScrollViewProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewProxy.swift; sourceTree = "<group>"; };
 		203E3D6A28947A0900D280A4 /* CheckUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUpdate.swift; sourceTree = "<group>"; };
 		203E3D6D2894854100D280A4 /* UpdateFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFeatureView.swift; sourceTree = "<group>"; };
-		2075D28227D2ABB300185789 /* Calculator.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Calculator.plist; sourceTree = "<group>"; };
 		209B7AF92783AA34006643A4 /* redDotAnimate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = redDotAnimate.json; sourceTree = "<group>"; };
 		209B7AFA2783AA34006643A4 /* animateDots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animateDots.json; sourceTree = "<group>"; };
 		20A9F91327EAC49D0069ECC2 /* NavigationBarColorModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarColorModifier.swift; sourceTree = "<group>"; };
 		20A9F91427EAC49D0069ECC2 /* NavigationBarTransparentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarTransparentStyle.swift; sourceTree = "<group>"; };
 		20B3D2AE2B6C40000040902E /* RoundTabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTabBarView.swift; sourceTree = "<group>"; };
+		C4ATC00100000000000001 /* AppTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabContainer.swift; sourceTree = "<group>"; };
 		20BE6F63288EE2660052C086 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		20BE6F66288EE2C90052C086 /* FavoriteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMainView.swift; sourceTree = "<group>"; };
 		20BE6F68288EE3BE0052C086 /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
@@ -1025,13 +1035,11 @@
 		63655A39610C9B529CC9B7FC /* Asystole.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Asystole.gif; path = CriticalX/Views/MainView/Home/Cardiac/OthersRow/gifs/Asystole.gif; sourceTree = SOURCE_ROOT; };
 		63731D6B3F97391412E82F1E /* ConversionViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversionViewModel.swift; sourceTree = "<group>"; };
 		67EAB9F3F89F35022B655C8B /* SVT1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = SVT1.gif; path = CriticalX/Views/MainView/Home/Cardiac/OthersRow/gifs/SVT1.gif; sourceTree = SOURCE_ROOT; };
-		6B4CC86AF0094B67328256C9 /* Pods-CriticalX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CriticalX.debug.xcconfig"; path = "Target Support Files/Pods-CriticalX/Pods-CriticalX.debug.xcconfig"; sourceTree = "<group>"; };
 		6FFA0DA6030BB42BA131ED09 /* 2ndDegreeTypeII.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 2ndDegreeTypeII.gif; path = CriticalX/Views/MainView/Home/Cardiac/OthersRow/gifs/2ndDegreeTypeII.gif; sourceTree = SOURCE_ROOT; };
 		78A174CB1E3C9D8FF63964E2 /* Polymorphic_VTach.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Polymorphic_VTach.gif; path = CriticalX/Views/MainView/Home/Cardiac/OthersRow/gifs/Polymorphic_VTach.gif; sourceTree = SOURCE_ROOT; };
 		7B7C68617C986A1F690CBF87 /* TransfusionReactionsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TransfusionReactionsView.swift; sourceTree = "<group>"; };
 		87D974A3529274372B13E3EA /* Aflutter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Aflutter.gif; path = CriticalX/Views/MainView/Home/Cardiac/OthersRow/gifs/Aflutter.gif; sourceTree = SOURCE_ROOT; };
 		92A9A9068751807DD0D40254 /* SinusBradycardia.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = SinusBradycardia.gif; path = CriticalX/Views/MainView/Home/Cardiac/OthersRow/gifs/SinusBradycardia.gif; sourceTree = SOURCE_ROOT; };
-		A77E1E53987FBFEE944CB8BE /* Pods-CriticalX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CriticalX.release.xcconfig"; path = "Target Support Files/Pods-CriticalX/Pods-CriticalX.release.xcconfig"; sourceTree = "<group>"; };
 		AB095B5363BF9F91634095E5 /* APIKeyBootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyBootstrap.swift; sourceTree = "<group>"; };
 		APOB00012E99D7C002AEF1B /* AppOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOnboardingView.swift; sourceTree = "<group>"; };
 		B2909F1878A0D962490F5B7B /* ConversionCalculatorHubView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversionCalculatorHubView.swift; sourceTree = "<group>"; };
@@ -1046,6 +1054,9 @@
 		C41178402F801C7500115966 /* IMMEDIATE_ACTION_PLAN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = IMMEDIATE_ACTION_PLAN.md; sourceTree = "<group>"; };
 		C41178422F801CDF00115966 /* SESSION_SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SESSION_SUMMARY.md; sourceTree = "<group>"; };
 		C41178442F801CF100115966 /* QUICK_FIX_REFERENCE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICK_FIX_REFERENCE.md; sourceTree = "<group>"; };
+		C411809E2F802F8E00115966 /* LightModeDesignTestV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightModeDesignTestV2.swift; sourceTree = "<group>"; };
+		C41180A02F8032BA00115966 /* find_duplicate_keys.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = find_duplicate_keys.sh; sourceTree = "<group>"; };
+		C41180A22F8032CD00115966 /* CRASH_FIX_DUPLICATE_KEYS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CRASH_FIX_DUPLICATE_KEYS.md; sourceTree = "<group>"; };
 		C4145FDF2D53FBCB00191D05 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		C4145FE12D54665100191D05 /* DrugCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugCardView.swift; sourceTree = "<group>"; };
 		C4145FE32D551B4800191D05 /* CustomHeaderShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderShapes.swift; sourceTree = "<group>"; };
@@ -1331,6 +1342,7 @@
 		CE6EDF002EDE84C700BE5950 /* CriticalX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CriticalX.entitlements; sourceTree = "<group>"; };
 		CECDAEAB970F347F8E5AC6D6 /* VFib.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = VFib.gif; path = CriticalX/Views/MainView/Home/Cardiac/OthersRow/gifs/VFib.gif; sourceTree = SOURCE_ROOT; };
 		CEEF429D2ED68614003BEA54 /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
+		CLCALC0001000000000002 /* ClinicalCalculatorMoments.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ClinicalCalculatorMoments.swift; sourceTree = "<group>"; };
 		CMOD00010A000000000001 /* CodableDrugModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableDrugModels.swift; sourceTree = "<group>"; };
 		CVBR00010A0000000000D1D1 /* DrugRecord+ViewBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrugRecord+ViewBridge.swift"; sourceTree = "<group>"; };
 		CVER00010A0000000000A1A1 /* DrugDataExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugDataExporter.swift; sourceTree = "<group>"; };
@@ -1363,75 +1375,67 @@
 		C4702B752F1FF30A00480D26 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"ACLS/Quiz/.planning/500-QUESTION-EXPANSION-ROADMAP.md",
 				ACLS/Quiz/.planning/config.json,
-				"ACLS/Quiz/.planning/CONTENT-EXTENSION-GUIDE.md",
-				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-01-PLAN.md",
 				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-01-SUMMARY.md",
 				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-02-PLAN.md",
 				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-02-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-03-PLAN.md",
 				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-03-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-04-PLAN.md",
 				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-04-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-05-PLAN.md",
 				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-05-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-06-PLAN.md",
-				"ACLS/Quiz/.planning/phases/01-foundation-domain-models/01-06-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/02-acls-topics-clinical-context/02-01-PLAN.md",
 				"ACLS/Quiz/.planning/phases/02-acls-topics-clinical-context/02-01-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/02-acls-topics-clinical-context/02-02-PLAN.md",
 				"ACLS/Quiz/.planning/phases/02-acls-topics-clinical-context/02-02-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/03-question-engine-core/03-01-PLAN.md",
 				"ACLS/Quiz/.planning/phases/03-question-engine-core/03-01-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/04-scoring-system/04-01-PLAN.md",
 				"ACLS/Quiz/.planning/phases/04-scoring-system/04-01-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/05-json-content-system/05-01-PLAN.md",
-				"ACLS/Quiz/.planning/phases/05-json-content-system/05-01-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/06-persistence-layer/06-01-PLAN.md",
 				"ACLS/Quiz/.planning/phases/06-persistence-layer/06-01-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/07-api-service-layer/07-01-PLAN.md",
 				"ACLS/Quiz/.planning/phases/07-api-service-layer/07-01-SUMMARY.md",
 				"ACLS/Quiz/.planning/phases/08-dosing-calculations/08-01-SUMMARY.md",
 				"ACLS/Quiz/.planning/phases/09-algorithm-cards/09-01-PLAN.md",
-				"ACLS/Quiz/.planning/phases/09-algorithm-cards/09-01-SUMMARY.md",
 				"ACLS/Quiz/.planning/phases/10-content-research/10-01-PLAN.md",
 				"ACLS/Quiz/.planning/phases/10-content-research/10-01-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/10-content-research/AHA-2025-GUIDELINES-SUMMARY.md",
-				"ACLS/Quiz/.planning/phases/10-content-research/CONTENT-VERIFICATION-PROCESS.md",
 				"ACLS/Quiz/.planning/phases/11-question-bank/11-01-PLAN.md",
-				"ACLS/Quiz/.planning/phases/11-question-bank/11-01-SUMMARY.md",
 				"ACLS/Quiz/.planning/phases/12-testing-polish/12-01-PLAN.md",
 				"ACLS/Quiz/.planning/phases/12-testing-polish/12-01-SUMMARY.md",
 				ACLS/Quiz/.planning/PROJECT.md,
-				ACLS/Quiz/.planning/ROADMAP.md,
-				ACLS/Quiz/.planning/STATE.md,
 				"ACLS/Quiz/ACLS/2025-AHA-Resuscitation-Guidelines.md",
 				"ACLS/Quiz/ACLS/ICU-Advantage-ACLS-Review.md",
+				OthersRow/gifs/Aflutter.gif,
 				"OthersRow/gifs/2ndDegreeTypeI ( Wenkeback).gif",
 				OthersRow/gifs/2ndDegreeTypeII.gif,
 				OthersRow/gifs/2ndDegreeTypeII2.gif,
 				OthersRow/gifs/3rdDegreeHB.gif,
-				OthersRow/gifs/a.gif,
-				OthersRow/gifs/Aflutter.gif,
 				OthersRow/gifs/Asystole.gif,
 				OthersRow/gifs/AtrialFib.gif,
+				OthersRow/gifs/Breathing.gif,
+				OthersRow/gifs/Heart_Parasternal.gif,
+				OthersRow/gifs/Heart_subxyphoid.gif,
 				OthersRow/gifs/NormalSinus.gif,
 				OthersRow/gifs/Polymorphic_VTach.gif,
-				OthersRow/gifs/SinusBradycardia.gif,
-				OthersRow/gifs/SinusTachycardia.gif,
 				OthersRow/gifs/SVT.gif,
 				OthersRow/gifs/SVT1.gif,
-				OthersRow/gifs/VentricularFibrillation.gif,
+				OthersRow/gifs/SinusBradycardia.gif,
+				OthersRow/gifs/SinusBradyv.2.gif,
+				OthersRow/gifs/SinusTachycardia.gif,
+				OthersRow/gifs/SweepRUQ2.gif,
 				OthersRow/gifs/VFib.gif,
 				OthersRow/gifs/VTach.gif,
+				OthersRow/gifs/VentricularFibrillation.gif,
+				OthersRow/gifs/a.gif,
+			);
+			target = C55A7F8D27334D3A0017EAF7 /* CriticalX */;
+		};
+		C4702B762F1FF30A00480D27 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"EmptyStateView.swift",
+				"LoadingStateView.swift",
+				"CalculatorDisclaimerView.swift",
 			);
 			target = C55A7F8D27334D3A0017EAF7 /* CriticalX */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C4700BAF2F1F033C00480D26 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
+		C4700BAF2F1F033C00480D26 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (C4702B762F1FF30A00480D27 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
 		C47BE0EA2F1EA1CB00C703F5 /* AntibioticsMasterclass */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AntibioticsMasterclass; sourceTree = "<group>"; };
 		C49A173F2F2BB2E400B8A3BC /* APGAR */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = APGAR; sourceTree = "<group>"; };
 		C49A17412F2BB2E400B8A3BC /* qSOFA */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = qSOFA; sourceTree = "<group>"; };
@@ -1449,15 +1453,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C46A89592F8062F9000CE2A1 /* GoogleSignInSwift in Frameworks */,
+				C46A89542F806283000CE2A1 /* FirebaseDatabase in Frameworks */,
 				C42D99532F3A614300BEA507 /* Realtime in Frameworks */,
+				C46A894E2F806283000CE2A1 /* FirebaseAuth in Frameworks */,
+				C46A89502F806283000CE2A1 /* FirebaseCore in Frameworks */,
 				C42D99512F3A614300BEA507 /* PostgREST in Frameworks */,
 				C42D994F2F3A614300BEA507 /* Functions in Frameworks */,
 				C42C67A22F03595800756B3C /* GoogleGenerativeAI in Frameworks */,
 				C42D99552F3A614400BEA507 /* Storage in Frameworks */,
 				C42D99572F3A614400BEA507 /* Supabase in Frameworks */,
-				21307A799CCF408E80A80FD0 /* Pods_CriticalX.framework in Frameworks */,
 				C42D994D2F3A614300BEA507 /* Auth in Frameworks */,
+				C46A89522F806283000CE2A1 /* FirebaseCrashlytics in Frameworks */,
 				C4D669772D68D49800DFC5C0 /* BottomSheet in Frameworks */,
+				C46A894C2F806283000CE2A1 /* FirebaseAnalytics in Frameworks */,
+				C46A89572F8062F9000CE2A1 /* GoogleSignIn in Frameworks */,
+				C4E00A072F90000100000007 /* MorphingLabel in Frameworks */,
+				C4E00A082F90000100000008 /* SSSwiftUIGIFView in Frameworks */,
+				C4E00A092F90000100000009 /* SweeterSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1738,8 +1751,6 @@
 		3121FB602BA6165E6D9E2AE7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6B4CC86AF0094B67328256C9 /* Pods-CriticalX.debug.xcconfig */,
-				A77E1E53987FBFEE944CB8BE /* Pods-CriticalX.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2230,6 +2241,7 @@
 				C42512662D5547EB00803521 /* CriticalHomePage.swift */,
 				C4EM0GV10000000000010000 /* EmojiGenerationView.swift */,
 				C4F69A442F194F0E00C0D820 /* Home Page View/TabAnalytics.swift */,
+				C4ATC00100000000000001 /* AppTabContainer.swift */,
 				20B3D2AE2B6C40000040902E /* RoundTabBarView.swift */,
 				5268D215273E77F1008AEBDD /* TabBarView.swift */,
 				528BA783274287FE00F1C89F /* AboutCritical */,
@@ -2717,10 +2729,10 @@
 		C55A7F8527334D3A0017EAF7 = {
 			isa = PBXGroup;
 			children = (
+				C411809E2F802F8E00115966 /* LightModeDesignTestV2.swift */,
 				C55A7F9027334D3A0017EAF7 /* CriticalX */,
 				C55A7F8F27334D3A0017EAF7 /* Products */,
 				3121FB602BA6165E6D9E2AE7 /* Pods */,
-				FF957721F62D93321A3B4461 /* Frameworks */,
 				C42D96822F3637CA00BEA507 /* MOMENT_SEARCH_AUDIT_2025.md */,
 				C42D99472F3A475200BEA507 /* ENTERPRISE_LICENSE_SETUP.md */,
 				C42D99482F3A49C100BEA507 /* ENTERPRISE_LICENSE_REDEMPTION.md */,
@@ -2743,7 +2755,6 @@
 				52EF84A22750C200005757DF /* AppDelegate.swift */,
 				52EF84A12750C200005757DF /* SceneDelegate.swift */,
 				CE4D1DD32EEA06CB002AEF1B /* configuration.storekit */,
-				2075D28227D2ABB300185789 /* Calculator.plist */,
 				528BA77B27422BE600F1C89F /* Info.plist */,
 				C4667AAC2D5ACD10009C6FEE /* GoogleService-Info.plist */,
 				CE0E27C82EFDADE2004B3826 /* Common */,
@@ -2981,6 +2992,8 @@
 				SHARE0002000000000002 /* ClinicalShareHelper.swift */,
 				SHARE0002000000000003 /* UsageMilestoneTracker.swift */,
 				C41176D92F7D807E00115966 /* SupabaseConfig.swift */,
+				C41180A02F8032BA00115966 /* find_duplicate_keys.sh */,
+				C41180A22F8032CD00115966 /* CRASH_FIX_DUPLICATE_KEYS.md */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -3006,14 +3019,6 @@
 			path = Conversion;
 			sourceTree = "<group>";
 		};
-		FF957721F62D93321A3B4461 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0B871CDA67E8FA03516A7FA7 /* Pods_CriticalX.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		NLSEARCH0003000000000001 /* NLSearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -3023,6 +3028,7 @@
 				EKGNLSRCH00100000000001 /* EKGMomentNLSearch.swift */,
 				C3390F431DFF51EC94206A2E /* ConversionMoments.swift */,
 				4816892519D2F0E6E0CD40B6 /* TransfusionReactionsMoments.swift */,
+				CLCALC0001000000000002 /* ClinicalCalculatorMoments.swift */,
 			);
 			path = NLSearch;
 			sourceTree = "<group>";
@@ -3034,11 +3040,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C55A7F9C27334D3C0017EAF7 /* Build configuration list for PBXNativeTarget "CriticalX" */;
 			buildPhases = (
-				194FE9607BE3BF2E49D817C0 /* [CP] Check Pods Manifest.lock */,
 				C55A7F8A27334D3A0017EAF7 /* Sources */,
 				C55A7F8B27334D3A0017EAF7 /* Frameworks */,
 				C55A7F8C27334D3A0017EAF7 /* Resources */,
-				C319FA2B0031C0829F22434D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3067,6 +3071,16 @@
 				C42D99522F3A614300BEA507 /* Realtime */,
 				C42D99542F3A614300BEA507 /* Storage */,
 				C42D99562F3A614400BEA507 /* Supabase */,
+				C46A894B2F806283000CE2A1 /* FirebaseAnalytics */,
+				C46A894D2F806283000CE2A1 /* FirebaseAuth */,
+				C46A894F2F806283000CE2A1 /* FirebaseCore */,
+				C46A89512F806283000CE2A1 /* FirebaseCrashlytics */,
+				C46A89532F806283000CE2A1 /* FirebaseDatabase */,
+				C46A89562F8062F9000CE2A1 /* GoogleSignIn */,
+				C46A89582F8062F9000CE2A1 /* GoogleSignInSwift */,
+				C4E00A042F90000100000004 /* MorphingLabel */,
+				C4E00A052F90000100000005 /* SSSwiftUIGIFView */,
+				C4E00A062F90000100000006 /* SweeterSwift */,
 			);
 			productName = CriticalX;
 			productReference = C55A7F8E27334D3A0017EAF7 /* Critical Medical Guide.app */;
@@ -3100,6 +3114,11 @@
 				C4D669752D68D49800DFC5C0 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				C42C67A02F03595800756B3C /* XCRemoteSwiftPackageReference "deprecated-generative-ai-swift" */,
 				C42D994B2F3A614300BEA507 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				C46A894A2F806283000CE2A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C46A89552F8062F9000CE2A1 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				C4E00A012F90000100000001 /* XCRemoteSwiftPackageReference "LTMorphingLabel" */,
+				C4E00A022F90000100000002 /* XCRemoteSwiftPackageReference "SSSwiftUIGIFView" */,
+				C4E00A032F90000100000003 /* XCRemoteSwiftPackageReference "SweeterSwift" */,
 			);
 			productRefGroup = C55A7F8F27334D3A0017EAF7 /* Products */;
 			projectDirPath = "";
@@ -3187,7 +3206,6 @@
 				52718CCF276367D900AF3A15 /* chestpain.wav in Resources */,
 				52718CB6276367D900AF3A15 /* needpainkiller.wav in Resources */,
 				52718CD1276367D900AF3A15 /* medicinetaking.wav in Resources */,
-				2075D28327D2ABB300185789 /* Calculator.plist in Resources */,
 				52718CD7276367D900AF3A15 /* allergies.wav in Resources */,
 				209B7AFC2783AA34006643A4 /* animateDots.json in Resources */,
 				CE4D1DD42EEA06CB002AEF1B /* configuration.storekit in Resources */,
@@ -3205,6 +3223,7 @@
 				C4F695352F17E28900C0D820 /* README.md in Resources */,
 				52718CE6276367D900AF3A15 /* giveoxygen.wav in Resources */,
 				1379B8EC278706C500BB7957 /* CentralLine_LongAxisTenting.gif in Resources */,
+				C41180A32F8032CD00115966 /* CRASH_FIX_DUPLICATE_KEYS.md in Resources */,
 				52718CB9276367D900AF3A15 /* needwalkingstick.wav in Resources */,
 				52718CC3276367D900AF3A15 /* docwilltakecaresoon.wav in Resources */,
 				137DD18127957EDA008067BD /* SweepThroughRUQ.gif in Resources */,
@@ -3216,6 +3235,7 @@
 				52718CEF276367D900AF3A15 /* dontUnderstand.wav in Resources */,
 				20C5E80B274D5BFE001F7ADF /* SF-Pro-Text-Regular.otf in Resources */,
 				1379B8EF278706C500BB7957 /* CentralLine_ColorDoppler.gif in Resources */,
+				C41180A12F8032BA00115966 /* find_duplicate_keys.sh in Resources */,
 				52718CD0276367D900AF3A15 /* whereisthepain.wav in Resources */,
 				C55A7F9927334D3C0017EAF7 /* Preview Assets.xcassets in Resources */,
 				52718CF3276367D900AF3A15 /* wakeUp.wav in Resources */,
@@ -3262,52 +3282,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		194FE9607BE3BF2E49D817C0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CriticalX-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C319FA2B0031C0829F22434D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CriticalX/Pods-CriticalX-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CriticalX/Pods-CriticalX-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CriticalX/Pods-CriticalX-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C55A7F8A27334D3A0017EAF7 /* Sources */ = {
@@ -3420,6 +3394,7 @@
 				136F9F392787FD9700325EE1 /* VentManagemnetTableView.swift in Sources */,
 				1379B8C82786CFD300BB7957 /* AnteriorThoracicDetailView.swift in Sources */,
 				C401B09A2D56E75E0003B271 /* ChatMessage.swift in Sources */,
+				C4ATC00100000001000001 /* AppTabContainer.swift in Sources */,
 				20B3D2AF2B6C40000040902E /* RoundTabBarView.swift in Sources */,
 				C4CDCC962F50F3750074FD84 /* EmptyStateView.swift in Sources */,
 				136B3309277B3C6C00900884 /* IschemicStrokeathology.swift in Sources */,
@@ -3691,6 +3666,7 @@
 				C4CD9D9F2F159114001EFEC6 /* MedicationQuickReferenceCard.swift in Sources */,
 				20BE6F6B288F7B3D0052C086 /* FavoriteButton.swift in Sources */,
 				CE4D1DCF2EE99D2D002AEF1B /* PaywallView.swift in Sources */,
+				C411809F2F802F8E00115966 /* LightModeDesignTestV2.swift in Sources */,
 				52718C412763190200AF3A15 /* IVDripRateView.swift in Sources */,
 				2024F64127C5D54600032817 /* GifView.swift in Sources */,
 				C4B4810C2F6C6B6B006FF23D /* RecentCalculationsView.swift in Sources */,
@@ -3830,6 +3806,7 @@
 				76DD0E00022EF6E1C9C4EFB4 /* GoldBannerPreview.swift in Sources */,
 				E6BF001A6FB9062CE9357E1B /* TransfusionReactionsView.swift in Sources */,
 				E549336BCF17D57D6A49D2C0 /* TransfusionReactionsMoments.swift in Sources */,
+				CLCALC0001000000000001 /* ClinicalCalculatorMoments.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3966,7 +3943,6 @@
 		};
 		C55A7F9D27334D3C0017EAF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B4CC86AF0094B67328256C9 /* Pods-CriticalX.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4007,7 +3983,6 @@
 		};
 		C55A7F9E27334D3C0017EAF7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A77E1E53987FBFEE944CB8BE /* Pods-CriticalX.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4086,12 +4061,52 @@
 				minimumVersion = 2.5.1;
 			};
 		};
+		C46A894A2F806283000CE2A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.11.0;
+			};
+		};
+		C46A89552F8062F9000CE2A1 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
 		C4D669752D68D49800DFC5C0 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lucaszischka/BottomSheet";
 			requirement = {
 				kind = exactVersion;
 				version = 3.1.1;
+			};
+		};
+		C4E00A012F90000100000001 /* XCRemoteSwiftPackageReference "LTMorphingLabel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lexrus/LTMorphingLabel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+		C4E00A022F90000100000002 /* XCRemoteSwiftPackageReference "SSSwiftUIGIFView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimformSolutionsPvtLtd/SSSwiftUIGIFView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		C4E00A032F90000100000003 /* XCRemoteSwiftPackageReference "SweeterSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yonat/SweeterSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -4132,10 +4147,60 @@
 			package = C42D994B2F3A614300BEA507 /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
 		};
+		C46A894B2F806283000CE2A1 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46A894A2F806283000CE2A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		C46A894D2F806283000CE2A1 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46A894A2F806283000CE2A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		C46A894F2F806283000CE2A1 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46A894A2F806283000CE2A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		C46A89512F806283000CE2A1 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46A894A2F806283000CE2A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		C46A89532F806283000CE2A1 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46A894A2F806283000CE2A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		C46A89562F8062F9000CE2A1 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46A89552F8062F9000CE2A1 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		C46A89582F8062F9000CE2A1 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C46A89552F8062F9000CE2A1 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
 		C4D669762D68D49800DFC5C0 /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C4D669752D68D49800DFC5C0 /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
+		};
+		C4E00A042F90000100000004 /* MorphingLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4E00A012F90000100000001 /* XCRemoteSwiftPackageReference "LTMorphingLabel" */;
+			productName = MorphingLabel;
+		};
+		C4E00A052F90000100000005 /* SSSwiftUIGIFView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4E00A022F90000100000002 /* XCRemoteSwiftPackageReference "SSSwiftUIGIFView" */;
+			productName = SSSwiftUIGIFView;
+		};
+		C4E00A062F90000100000006 /* SweeterSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4E00A032F90000100000003 /* XCRemoteSwiftPackageReference "SweeterSwift" */;
+			productName = SweeterSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
