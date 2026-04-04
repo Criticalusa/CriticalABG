@@ -92,6 +92,10 @@ struct LearnTabView: View {
                         .padding(.bottom, 8)
 
                         // ── SECTIONS ──
+                        if selectedFilter == "All" || selectedFilter == "Favorites" {
+                            myFavoritesSection
+                        }
+
                         if selectedFilter == "All" || selectedFilter == "Reference" {
                             referenceMaterialsSection
                         }
@@ -106,10 +110,6 @@ struct LearnTabView: View {
 
                         if selectedFilter == "All" || selectedFilter == "Pathways" {
                             proceduresSection
-                        }
-
-                        if selectedFilter == "All" || selectedFilter == "Favorites" {
-                            myFavoritesSection
                         }
 
                         Spacer().frame(height: 120)
@@ -153,7 +153,7 @@ extension LearnTabView {
                 image: "NanoBanana/home/home_procedures_and_imaging",
                 title: "Chest X-Ray",
                 desc: "Systematic interpretation guide",
-                destination: AnyView(Procedure_ImagingMainView().goldNavigationTitle("Procedures", image: "NanoBanana/home/home_procedures_and_imaging"))
+                destination: AnyView(ChestXrayView().goldNavigationTitle("Chest X-Ray", image: "NanoBanana/home/home_procedures_and_imaging"))
             )
 
             learnRow(
@@ -429,7 +429,6 @@ extension LearnTabView {
 
             // Embed the existing FavoriteMainView
             FavoriteMainView(searchText: .constant(""), selectedCategory: .constant(nil), embedded: true)
-                .frame(minHeight: 300)
                 .padding(.horizontal, 20)
         }
     }

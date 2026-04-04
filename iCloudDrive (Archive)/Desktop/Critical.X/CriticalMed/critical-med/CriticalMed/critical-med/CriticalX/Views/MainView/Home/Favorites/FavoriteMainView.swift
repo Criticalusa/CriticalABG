@@ -50,32 +50,34 @@ struct FavoriteMainView: View {
             VStack(spacing: 0) {
                 // MARK: - List of Favorites
                 if arrFavorites.isEmpty {
-                    VStack(spacing: 16) {
-                        Spacer()
-                        
+                    VStack(spacing: 12) {
+                        if !embedded { Spacer() }
+
                         Image(systemName: "star")
-                            .font(.system(size: 64, weight: .light))
+                            .font(.system(size: embedded ? 32 : 64, weight: .light))
                             .foregroundColor(.secondary.opacity(0.6))
-                        
-                        VStack(spacing: 8) {
+
+                        VStack(spacing: 4) {
                             Text("No favorites yet")
-                                .font(.system(size: 20, weight: .semibold))
+                                .font(.system(size: embedded ? 15 : 20, weight: .semibold))
                                 .foregroundColor(.primary)
-                            
+
                             Text("Swipe right on items in Meds or Drips to add them")
-                                .font(.system(size: 15))
+                                .font(.system(size: embedded ? 13 : 15))
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 40)
                         }
-                        
-                        Spacer()
+
+                        if !embedded { Spacer() }
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(maxWidth: .infinity)
+                    .frame(maxHeight: embedded ? nil : .infinity)
+                    .padding(.vertical, embedded ? 16 : 0)
                 } else {
                     let dripsFavorites = filteredFavorites.filter { $0.type == "Drip" }
                     let medsFavorites = filteredFavorites.filter { $0.type == "Med" }
-                    let calcFavorites = filteredFavorites.filter { $0.type == "Cal" }
+                    let calcFavorites = filteredFavorites.filter { ["Cal", "Ventilator", "VentMode", "Learn"].contains($0.type) }
                     
                     if embedded {
                         // MARK: - Embedded mode: LazyVStack (works inside a parent ScrollView)
@@ -188,6 +190,13 @@ struct FavoriteMainView: View {
                                                             }
                                                             .tint(.yellowColor)
                                                         }
+                                                        .swipeActions(edge: .leading) {
+                                                            Button(role: .destructive) {
+                                                                removeFavorite(title: item.title, type: item.type)
+                                                            } label: {
+                                                                Label("Remove", systemImage: "heart.slash.fill")
+                                                            }
+                                                        }
                                                 }
                                             }
                                         }
@@ -208,6 +217,13 @@ struct FavoriteMainView: View {
                                                             .opacity(0)
 
                                                         PharmacologyListView(item: med)
+                                                            .swipeActions(edge: .leading) {
+                                                                Button(role: .destructive) {
+                                                                    removeFavorite(title: item.title, type: item.type)
+                                                                } label: {
+                                                                    Label("Remove", systemImage: "heart.slash.fill")
+                                                                }
+                                                            }
                                                     }
                                                     .padding(.horizontal, -16)
                                                     .listRowBackground(Color.clear)
@@ -228,6 +244,13 @@ struct FavoriteMainView: View {
                                         ForEach(calcFavorites) { item in
                                             NavigationLink(destination: destinationView(for: item.title)) {
                                                 CalculatorFavoriteRow(title: item.title)
+                                            }
+                                            .swipeActions(edge: .leading) {
+                                                Button(role: .destructive) {
+                                                    removeFavorite(title: item.title, type: item.type)
+                                                } label: {
+                                                    Label("Remove", systemImage: "heart.slash.fill")
+                                                }
                                             }
                                             .listRowBackground(Color.clear)
                                         }
@@ -294,6 +317,12 @@ struct FavoriteMainView: View {
         }
     }
     
+    // MARK: - Remove Individual Favorite
+    private func removeFavorite(title: String, type: String) {
+        togleFavorites(title: title, type: type, isFavorite: false)
+        loadFavoriteData()
+    }
+
     // MARK: - Calculator Destination View
     @ViewBuilder
     private func destinationView(for title: String) -> some View {
@@ -350,6 +379,42 @@ struct FavoriteMainView: View {
         case "Urine Output":
             UrineOutputView(data: clinicalCalculatorData.UrineOutputSegmentDetails)
             
+        // RSI Calculator
+        case "RSI":
+            RSIIMainView()
+
+        // Hamilton T1
+        case "Hamilton T1":
+            HamiltonT1VentilatorView()
+
+        // Vent mode favorites
+        case "Assist-Control":
+            AssistControlDetailView()
+        case "SIMV":
+            SynchronizedIntermittentDetailView()
+        case "Pressure Support":
+            PressureSupportVenDetailView()
+        case "Pressure Control":
+            PressureControlVenDetailView()
+        case "APRV":
+            AirwayPressureDeatilView()
+        case "BiLevel":
+            BilevelPositiveDetailView()
+        case "CPAP":
+            ContinousPositiveDetailView()
+        case "IRV":
+            InverseRatioDetailView()
+        case "PRVC":
+            PressureRegulatedVolDetailView()
+        case "ASV":
+            HamiltonVent()
+        case "IMV":
+            IntermittentDetailView()
+
+        // Clinical section favorites
+        case "Ventilator Management":
+            VentManagemnetTableView()
+
         default:
             // Fallback for unrecognized calculators
             Text("Calculator not found: \(title)")
@@ -388,10 +453,18 @@ struct CalculatorFavoriteRow: View {
         case "tPA Dose Calculator": return "syringe.fill"
         case "Winters Formula": return "chart.line.uptrend.xyaxis"
         case "Urine Output": return "drop.degreesign.fill"
+        case "RSI": return "syringe.fill"
+        case _ where title.hasPrefix("Hamilton T1"): return "lungs.fill"
+        case "Ventilator Management": return "waveform.path"
+        case "Assist-Control", "SIMV", "PRVC", "IMV": return "waveform.path"
+        case "Pressure Support", "Pressure Control": return "gauge.with.dots.needle.33percent"
+        case "APRV", "BiLevel", "CPAP": return "wind"
+        case "IRV": return "arrow.left.arrow.right"
+        case "ASV": return "gearshape.2.fill"
         default: return "function"
         }
     }
-    
+
     private var iconColor: Color {
         switch title {
         case "P/F Ratio": return .blue
@@ -418,6 +491,14 @@ struct CalculatorFavoriteRow: View {
         case "CRRT Calculator": return .indigo
         case "Consensus Formula": return .orange
         case "IV Rate Calculator": return .teal
+        case "RSI": return .red
+        case _ where title.hasPrefix("Hamilton T1"): return .teal
+        case "Ventilator Management": return .blue
+        case "Assist-Control", "SIMV", "PRVC", "IMV": return .blue
+        case "Pressure Support", "Pressure Control": return .orange
+        case "APRV", "BiLevel", "CPAP": return .purple
+        case "IRV": return .red
+        case "ASV": return .purple
         default: return .accentColor
         }
     }

@@ -73,17 +73,29 @@ struct CriticalEKGView: View {
             }
         }
         .fullScreenCover(isPresented: $isActivating) {
-            MiddleView(count: $menuSection, row: $selectedRow)
+            ZStack(alignment: .topTrailing) {
+                MiddleView(count: $menuSection, row: $selectedRow)
+                PremiumLightCloseButton { isActivating = false }
+                    .padding(.top, 16)
+                    .padding(.trailing, 20)
+                    .zIndex(999)
+            }
         }
         .fullScreenCover(isPresented: $isShowingRhythmDetail) {
-            NavigationView {
-                OthersRowsMiddleView(section: navSection, row: navRow)
+            ZStack(alignment: .topTrailing) {
+                NavigationView {
+                    OthersRowsMiddleView(section: navSection, row: navRow)
+                }
+                .navigationViewStyle(.stack)
+                .environment(
+                    \.cardiacListRowImage,
+                    CardiacHeader.listRowImage(section: navSection, row: navRow)
+                )
+                PremiumLightCloseButton { isShowingRhythmDetail = false }
+                    .padding(.top, 16)
+                    .padding(.trailing, 20)
+                    .zIndex(999)
             }
-            .navigationViewStyle(.stack)
-            .environment(
-                \.cardiacListRowImage,
-                CardiacHeader.listRowImage(section: navSection, row: navRow)
-            )
         }
         .onAppear {
             withAnimation(.easeOut(duration: 0.4)) {
@@ -261,6 +273,7 @@ struct CriticalEKGView: View {
         }
     }
 
+
     // MARK: - Clinical Takeaway Card
     private var clinicalTakeawayCard: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -379,7 +392,7 @@ struct CardiacFeaturedCard: View {
                         .fill(iconColor.opacity(0.12))
                         .frame(width: 50, height: 50)
 
-                    Image(systemName: "heart.fill")
+                    Image(systemName: "waveform.path.ecg")
                         .font(.system(size: 20, weight: .medium))
                         .foregroundColor(iconColor)
                 }
