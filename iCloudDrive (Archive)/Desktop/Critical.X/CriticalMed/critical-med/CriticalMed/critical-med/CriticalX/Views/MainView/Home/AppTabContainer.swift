@@ -48,17 +48,6 @@ struct AppTabContainer: View {
             VStack {
                 Spacer()
 
-                // Fade gradient above bar
-                LinearGradient(
-                    colors: colorScheme == .dark
-                        ? [CriticalDesign.Colors.darkCanvas, CriticalDesign.Colors.darkCanvas.opacity(0.8), Color.clear]
-                        : [CriticalDesign.Adaptive.canvas(for: colorScheme), CriticalDesign.Adaptive.canvas(for: colorScheme).opacity(0.8), Color.clear],
-                    startPoint: .bottom,
-                    endPoint: .top
-                )
-                .frame(height: 30)
-                .allowsHitTesting(false)
-
                 RoundTabBarView(selectedIndex: $selectedTab) { index in
                     withAnimation(.easeInOut(duration: 0.2)) {
                         selectedTab = index
