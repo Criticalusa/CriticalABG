@@ -140,15 +140,19 @@ struct HighAnionGapMetaBolicView: View {
             .opacity(isHiddenTheoryButton ?? false ? 0 : 1)
             .shadow(radius: 8,y:12)
             .animation(.easeInOut, value: 1.0)
-            .navigationDestination(isPresented: $isActive) {
-                TheoryButtonDetailView(
-                    interpretationLabel: NSAttributedString(""),
-                    criticalPearl: NSAttributedString(""),
-                    differentialsLabel: NSAttributedString(""),
-                    main_DisorderTitle_Label: main_DisorderTitle_Label
-                )
-                .navigationBarBackground { Color.logoBlue.shadow(radius: 1) }
-            }
+            .background(
+                NavigationLink(
+                    destination: TheoryButtonDetailView(
+                        interpretationLabel: NSAttributedString(""),
+                        criticalPearl: NSAttributedString(""),
+                        differentialsLabel: NSAttributedString(""),
+                        main_DisorderTitle_Label: main_DisorderTitle_Label
+                    )
+                    .navigationBarBackground { Color.logoBlue.shadow(radius: 1) },
+                    isActive: $isActive
+                ) { EmptyView() }
+                    .hidden()
+            )
             
         }
         .frame(width: UIScreen.main.bounds.width * 0.95)

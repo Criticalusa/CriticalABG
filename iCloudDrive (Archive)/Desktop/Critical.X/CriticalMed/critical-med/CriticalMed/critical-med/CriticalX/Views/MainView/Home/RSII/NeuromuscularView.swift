@@ -82,9 +82,13 @@ struct NeuromuscularView: View {
                         .shadow(color: CriticalDesign.Colors.accentOrange.opacity(0.4), radius: 12, x: 0, y: 6)
                 )
             }
-            .navigationDestination(isPresented: $isActive) {
-                SevenPsbtnView()
-            }
+            .background(
+                NavigationLink(
+                    destination: SevenPsbtnView(),
+                    isActive: $isActive
+                ) { EmptyView() }
+                    .hidden()
+            )
             .padding(.top, CriticalDesign.Spacing.lg)
         }
         .padding(.vertical, CriticalDesign.Spacing.md)

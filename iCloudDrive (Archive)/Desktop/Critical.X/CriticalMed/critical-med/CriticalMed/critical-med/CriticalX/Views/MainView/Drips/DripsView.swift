@@ -13,15 +13,16 @@ struct DripsView: View {
     @State private var selectedCategory: String? = nil
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
-                
+
                 // Check My Drip Button - navigates to new CheckMyDrip view
-                Color.clear
-                    .navigationDestination(isPresented: $activaCheckMyDrips) {
-                        CheckMyDrip_New(data: clinicalCalculatorData.checkmyDripSegmentDetails)
-                            .navigationBarBackground { Color.logoBlue.shadow(radius: 1) }
-                    }
+                NavigationLink(
+                    destination: CheckMyDrip_New(data: clinicalCalculatorData.checkmyDripSegmentDetails)
+                        .navigationBarBackground { Color.logoBlue.shadow(radius: 1) },
+                    isActive: $activaCheckMyDrips
+                ) { EmptyView() }
+                    .hidden()
                 
                 // Background images
                 Image("Back")

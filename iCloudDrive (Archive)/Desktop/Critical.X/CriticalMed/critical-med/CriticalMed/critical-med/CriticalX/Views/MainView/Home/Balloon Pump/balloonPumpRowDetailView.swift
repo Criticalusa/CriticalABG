@@ -137,9 +137,13 @@ struct BalloonPumpTimingDetailView: View {
                     .cornerRadius(CriticalDesign.Radius.md)
                     .shadow(color: accentColor.opacity(0.3), radius: 6, x: 0, y: 3)
                 }
-                .navigationDestination(isPresented: $isVideoActive) {
-                    BalloonVideoView()
-                }
+                .background(
+                    NavigationLink(
+                        destination: BalloonVideoView(),
+                        isActive: $isVideoActive
+                    ) { EmptyView() }
+                        .hidden()
+                )
             }
         }
         .padding(CriticalDesign.Spacing.lg)

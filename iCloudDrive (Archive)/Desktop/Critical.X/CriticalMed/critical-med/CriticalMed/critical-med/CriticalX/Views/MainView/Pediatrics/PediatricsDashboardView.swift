@@ -122,10 +122,14 @@ struct PediatricsDashboardView: View {
             }
 
         }
-        .navigationDestination(isPresented: $isActive) {
-            PedsDetailView(viewModel: viewModel, selectedCategory: selectedCategory.wrappedValue)
-                .navigationBarBackground { Color.logoBlue.shadow(radius: 1) }
-        }
+        .background(
+            NavigationLink(
+                destination: PedsDetailView(viewModel: viewModel, selectedCategory: selectedCategory.wrappedValue)
+                    .navigationBarBackground { Color.logoBlue.shadow(radius: 1) },
+                isActive: $isActive
+            ) { EmptyView() }
+                .hidden()
+        )
         .sheet(isPresented: $showUpgradePrompt) {
             UpgradePromptView()
         }

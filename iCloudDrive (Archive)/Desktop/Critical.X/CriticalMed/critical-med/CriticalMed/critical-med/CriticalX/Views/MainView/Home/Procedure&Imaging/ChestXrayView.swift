@@ -300,10 +300,14 @@ struct ChestXrayView: View {
             )
         }
         .buttonStyle(PlainButtonStyle())
-        .navigationDestination(isPresented: $isActive) {
-            ChestXrayPocedureConfirmationView()
-                .navigationBarBackground { Color.logoBlue.shadow(radius: 1) }
-        }
+        .background(
+            NavigationLink(
+                destination: ChestXrayPocedureConfirmationView()
+                    .navigationBarBackground { Color.logoBlue.shadow(radius: 1) },
+                isActive: $isActive
+            ) { EmptyView() }
+                .hidden()
+        )
         .opacity(isAppearing ? 1 : 0)
         .offset(y: isAppearing ? 0 : 15)
         .animation(.easeOut(duration: 0.4).delay(0.2), value: isAppearing)

@@ -295,10 +295,14 @@ struct DripsTableView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarHidden(true)
-        .navigationDestination(isPresented: $isActive) {
-            UpdateDosageView(dripsModel: selectedDrip)
-                .navigationBarBackground { Color.logoBlue.shadow(radius: 1) }
-        }
+        .background(
+            NavigationLink(
+                destination: UpdateDosageView(dripsModel: selectedDrip)
+                    .navigationBarBackground { Color.logoBlue.shadow(radius: 1) },
+                isActive: $isActive
+            ) { EmptyView() }
+                .hidden()
+        )
         .sheet(isPresented: $showUpgradePrompt) {
             UpgradePromptView()
         }
