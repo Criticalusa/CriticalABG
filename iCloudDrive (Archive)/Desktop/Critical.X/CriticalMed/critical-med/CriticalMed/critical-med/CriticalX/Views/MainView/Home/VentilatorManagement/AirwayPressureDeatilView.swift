@@ -864,6 +864,11 @@ struct AirwayPressureDeatilView_Previews: PreviewProvider {
     }
 }
 
+// MARK: - String + Identifiable (needed for fullScreenCover(item:))
+extension String: @retroactive Identifiable {
+    public var id: String { self }
+}
+
 // MARK: - Full Screen Image View
 struct ImageFullScreenView: View {
     let imageName: String
