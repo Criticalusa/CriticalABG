@@ -655,7 +655,7 @@ struct CriticalHomePage: View {
     
     // MARK: Main Body View
     var body: some View {
-        NavigationStack {
+        NavigationView {
             GeometryReader { geometry in
             ZStack {
                 // MARK: - Navigation Bar Background (CardBlue)
@@ -1066,11 +1066,13 @@ struct CriticalHomePage: View {
                 }
                 .padding(.horizontal, 20)
             }
-            .navigationDestination(isPresented: $emergencyNavActive) {
-                if let dest = selectedEmergencyDestination {
-                    dest
-                }
-            }
+            .background(
+                NavigationLink(
+                    destination: selectedEmergencyDestination,
+                    isActive: $emergencyNavActive
+                ) { EmptyView() }
+                    .hidden()
+            )
         }
     }
 
@@ -1263,9 +1265,13 @@ struct CriticalHomePage: View {
                 }
             }
             .padding(.horizontal, 20)
-            .navigationDestination(isPresented: $categoryNavActive) {
-                NavigationFactory.getDestinationView(for: selectedCategoryNavId)
-            }
+            .background(
+                NavigationLink(
+                    destination: NavigationFactory.getDestinationView(for: selectedCategoryNavId),
+                    isActive: $categoryNavActive
+                ) { EmptyView() }
+                    .hidden()
+            )
         }
     }
 
