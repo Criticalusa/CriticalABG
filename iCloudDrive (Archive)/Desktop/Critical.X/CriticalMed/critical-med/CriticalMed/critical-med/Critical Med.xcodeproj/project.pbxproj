@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C4E00A072F90000100000007 /* MorphingLabel in Frameworks */ = {isa = PBXBuildFile; productRef = C4E00A042F90000100000004 /* MorphingLabel */; };
-		C4E00A082F90000100000008 /* SSSwiftUIGIFView in Frameworks */ = {isa = PBXBuildFile; productRef = C4E00A052F90000100000005 /* SSSwiftUIGIFView */; };
-		C4E00A092F90000100000009 /* SweeterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C4E00A062F90000100000006 /* SweeterSwift */; };
 		00262EA420B901CE1C6972EA /* Polymorphic_VTach.gif in Resources */ = {isa = PBXBuildFile; fileRef = 78A174CB1E3C9D8FF63964E2 /* Polymorphic_VTach.gif */; };
 		0409CAA7E8C5EFF0DF5D5C2E /* AtrialFib.gif in Resources */ = {isa = PBXBuildFile; fileRef = FF2ED3DB5535D99AD81B56CD /* AtrialFib.gif */; };
 		09ED86E069D82A27B327D776 /* 3rdDegreeHB.gif in Resources */ = {isa = PBXBuildFile; fileRef = 13F8804AA55C3BFB01CD20E3 /* 3rdDegreeHB.gif */; };
@@ -140,7 +137,6 @@
 		20A9F91527EAC49D0069ECC2 /* NavigationBarColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9F91327EAC49D0069ECC2 /* NavigationBarColorModifier.swift */; };
 		20A9F91627EAC49D0069ECC2 /* NavigationBarTransparentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9F91427EAC49D0069ECC2 /* NavigationBarTransparentStyle.swift */; };
 		20B3D2AF2B6C40000040902E /* RoundTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D2AE2B6C40000040902E /* RoundTabBarView.swift */; };
-		C4ATC00100000001000001 /* AppTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ATC00100000000000001 /* AppTabContainer.swift */; };
 		20BE6F64288EE2660052C086 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE6F63288EE2660052C086 /* FavoritesView.swift */; };
 		20BE6F67288EE2C90052C086 /* FavoriteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE6F66288EE2C90052C086 /* FavoriteMainView.swift */; };
 		20BE6F69288EE3BE0052C086 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE6F68288EE3BE0052C086 /* FavoriteModel.swift */; };
@@ -152,6 +148,7 @@
 		20C5E82D27518DC5001F7ADF /* NavigationBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C5E82C27518DC5001F7ADF /* NavigationBarColor.swift */; };
 		20CF458F27EBB279003A54BB /* NavbarToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF458E27EBB279003A54BB /* NavbarToolbarItemView.swift */; };
 		291093CBF5FC785010507B33 /* APIKeyBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB095B5363BF9F91634095E5 /* APIKeyBootstrap.swift */; };
+		C4AKM00100000001000001 /* APIKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AKM00100000000000001 /* APIKeyManager.swift */; };
 		441F192C0BABA1AF9CEAD8A0 /* NormalSinus.gif in Resources */ = {isa = PBXBuildFile; fileRef = F3CF7B8AAFCA27B79C5E5011 /* NormalSinus.gif */; };
 		49A12CA52BD3F37E40D5164B /* SinusTachycardia.gif in Resources */ = {isa = PBXBuildFile; fileRef = FF7C5D90B9B614256102DD3C /* SinusTachycardia.gif */; };
 		4CCE41538AD8118DFCB49B12 /* Asystole.gif in Resources */ = {isa = PBXBuildFile; fileRef = 63655A39610C9B529CC9B7FC /* Asystole.gif */; };
@@ -512,6 +509,7 @@
 		C4A1B2E22F2A0002006F47BB /* PediatricReferenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1B2E12F2A0002006F47BB /* PediatricReferenceService.swift */; };
 		C4A1B2F12F2A0003006F47BB /* ICloudSettingsSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1B2F02F2A0003006F47BB /* ICloudSettingsSync.swift */; };
 		C4ACLS2025MODELBUILD01 /* ACLS2025GuidelinesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ACLS2025MODELFILE0001 /* ACLS2025GuidelinesModel.swift */; };
+		C4ATC00100000001000001 /* AppTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ATC00100000000000001 /* AppTabContainer.swift */; };
 		C4B481082F6C6B32006FF23D /* Refactor_Plan.md in Resources */ = {isa = PBXBuildFile; fileRef = C4B481072F6C6B32006FF23D /* Refactor_Plan.md */; };
 		C4B4810A2F6C6B4F006FF23D /* CalculationHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B481092F6C6B4F006FF23D /* CalculationHistory.swift */; };
 		C4B4810C2F6C6B6B006FF23D /* RecentCalculationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4810B2F6C6B6B006FF23D /* RecentCalculationsView.swift */; };
@@ -591,6 +589,9 @@
 		C4DC12902F51DC3700F0F152 /* RUSHPumpDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC12862F51DC3600F0F152 /* RUSHPumpDetailView.swift */; };
 		C4DC12912F51DC3700F0F152 /* OcularUltrasoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC12842F51DC3600F0F152 /* OcularUltrasoundView.swift */; };
 		C4DC12922F51DC3700F0F152 /* RUSHPipesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC12852F51DC3600F0F152 /* RUSHPipesDetailView.swift */; };
+		C4E00A072F90000100000007 /* MorphingLabel in Frameworks */ = {isa = PBXBuildFile; productRef = C4E00A042F90000100000004 /* MorphingLabel */; };
+		C4E00A082F90000100000008 /* SSSwiftUIGIFView in Frameworks */ = {isa = PBXBuildFile; productRef = C4E00A052F90000100000005 /* SSSwiftUIGIFView */; };
+		C4E00A092F90000100000009 /* SweeterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C4E00A062F90000100000006 /* SweeterSwift */; };
 		C4E1C8C52B7124F5000AFAEF /* REBOA.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C8C42B7124F5000AFAEF /* REBOA.swift */; };
 		C4E1C8FF2B723E2E000AFAEF /* HypoHypernatremiaCorrectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C8FE2B723E2E000AFAEF /* HypoHypernatremiaCorrectionView.swift */; };
 		C4E1C9022B724742000AFAEF /* DismissKeyboardOnTapModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C9012B724742000AFAEF /* DismissKeyboardOnTapModifier.swift */; };
@@ -816,7 +817,6 @@
 		20A9F91327EAC49D0069ECC2 /* NavigationBarColorModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarColorModifier.swift; sourceTree = "<group>"; };
 		20A9F91427EAC49D0069ECC2 /* NavigationBarTransparentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarTransparentStyle.swift; sourceTree = "<group>"; };
 		20B3D2AE2B6C40000040902E /* RoundTabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTabBarView.swift; sourceTree = "<group>"; };
-		C4ATC00100000000000001 /* AppTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabContainer.swift; sourceTree = "<group>"; };
 		20BE6F63288EE2660052C086 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		20BE6F66288EE2C90052C086 /* FavoriteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMainView.swift; sourceTree = "<group>"; };
 		20BE6F68288EE3BE0052C086 /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
@@ -1041,6 +1041,7 @@
 		87D974A3529274372B13E3EA /* Aflutter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Aflutter.gif; path = CriticalX/Views/MainView/Home/Cardiac/OthersRow/gifs/Aflutter.gif; sourceTree = SOURCE_ROOT; };
 		92A9A9068751807DD0D40254 /* SinusBradycardia.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = SinusBradycardia.gif; path = CriticalX/Views/MainView/Home/Cardiac/OthersRow/gifs/SinusBradycardia.gif; sourceTree = SOURCE_ROOT; };
 		AB095B5363BF9F91634095E5 /* APIKeyBootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyBootstrap.swift; sourceTree = "<group>"; };
+		C4AKM00100000000000001 /* APIKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyManager.swift; sourceTree = "<group>"; };
 		APOB00012E99D7C002AEF1B /* AppOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOnboardingView.swift; sourceTree = "<group>"; };
 		B2909F1878A0D962490F5B7B /* ConversionCalculatorHubView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversionCalculatorHubView.swift; sourceTree = "<group>"; };
 		B2D4FFA0AC73B8946B83F050 /* VentricularFibrillation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = VentricularFibrillation.gif; path = CriticalX/Views/MainView/Home/Cardiac/OthersRow/gifs/VentricularFibrillation.gif; sourceTree = SOURCE_ROOT; };
@@ -1185,6 +1186,7 @@
 		C4A1B2E12F2A0002006F47BB /* PediatricReferenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PediatricReferenceService.swift; sourceTree = "<group>"; };
 		C4A1B2F02F2A0003006F47BB /* ICloudSettingsSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudSettingsSync.swift; sourceTree = "<group>"; };
 		C4ACLS2025MODELFILE0001 /* ACLS2025GuidelinesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACLS2025GuidelinesModel.swift; sourceTree = "<group>"; };
+		C4ATC00100000000000001 /* AppTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabContainer.swift; sourceTree = "<group>"; };
 		C4B481072F6C6B32006FF23D /* Refactor_Plan.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Refactor_Plan.md; sourceTree = "<group>"; };
 		C4B481092F6C6B4F006FF23D /* CalculationHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationHistory.swift; sourceTree = "<group>"; };
 		C4B4810B2F6C6B6B006FF23D /* RecentCalculationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCalculationsView.swift; sourceTree = "<group>"; };
@@ -1398,11 +1400,12 @@
 				ACLS/Quiz/.planning/PROJECT.md,
 				"ACLS/Quiz/ACLS/2025-AHA-Resuscitation-Guidelines.md",
 				"ACLS/Quiz/ACLS/ICU-Advantage-ACLS-Review.md",
-				OthersRow/gifs/Aflutter.gif,
 				"OthersRow/gifs/2ndDegreeTypeI ( Wenkeback).gif",
 				OthersRow/gifs/2ndDegreeTypeII.gif,
 				OthersRow/gifs/2ndDegreeTypeII2.gif,
 				OthersRow/gifs/3rdDegreeHB.gif,
+				OthersRow/gifs/a.gif,
+				OthersRow/gifs/Aflutter.gif,
 				OthersRow/gifs/Asystole.gif,
 				OthersRow/gifs/AtrialFib.gif,
 				OthersRow/gifs/Breathing.gif,
@@ -1410,25 +1413,24 @@
 				OthersRow/gifs/Heart_subxyphoid.gif,
 				OthersRow/gifs/NormalSinus.gif,
 				OthersRow/gifs/Polymorphic_VTach.gif,
-				OthersRow/gifs/SVT.gif,
-				OthersRow/gifs/SVT1.gif,
 				OthersRow/gifs/SinusBradycardia.gif,
 				OthersRow/gifs/SinusBradyv.2.gif,
 				OthersRow/gifs/SinusTachycardia.gif,
+				OthersRow/gifs/SVT.gif,
+				OthersRow/gifs/SVT1.gif,
 				OthersRow/gifs/SweepRUQ2.gif,
+				OthersRow/gifs/VentricularFibrillation.gif,
 				OthersRow/gifs/VFib.gif,
 				OthersRow/gifs/VTach.gif,
-				OthersRow/gifs/VentricularFibrillation.gif,
-				OthersRow/gifs/a.gif,
 			);
 			target = C55A7F8D27334D3A0017EAF7 /* CriticalX */;
 		};
 		C4702B762F1FF30A00480D27 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"EmptyStateView.swift",
-				"LoadingStateView.swift",
-				"CalculatorDisclaimerView.swift",
+				CalculatorDisclaimerView.swift,
+				EmptyStateView.swift,
+				LoadingStateView.swift,
 			);
 			target = C55A7F8D27334D3A0017EAF7 /* CriticalX */;
 		};
@@ -2813,6 +2815,7 @@
 				C4D669812D68FB7A00DFC5C0 /* GlassmorphicCards.swift */,
 				C4F695F62F182F1500C0D820 /* KeychainHelper.swift */,
 				AB095B5363BF9F91634095E5 /* APIKeyBootstrap.swift */,
+				C4AKM00100000000000001 /* APIKeyManager.swift */,
 				C4F6A4142F1AC8C600C0D820 /* PremiumLightComponents.swift */,
 			);
 			path = Utilities;
@@ -3746,6 +3749,7 @@
 				C4CDCCD12F5126500074FD84 /* CriticalRangeCard.swift in Sources */,
 				C4C3B7FA2F207DC200E9A4F1 /* EFastExaminationView.swift in Sources */,
 				C4F695F72F182F1500C0D820 /* KeychainHelper.swift in Sources */,
+				C4AKM00100000001000001 /* APIKeyManager.swift in Sources */,
 				291093CBF5FC785010507B33 /* APIKeyBootstrap.swift in Sources */,
 				1379A7DA27AAB837005478BD /* TheoryButtonDetailView.swift in Sources */,
 				C4F6A4192F1AF96500C0D820 /* HamiltonT1VentilatorView.swift in Sources */,
