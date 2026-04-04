@@ -31,7 +31,7 @@ struct AppTabContainer: View {
                     .navigationViewStyle(.stack)
                 case Tab.drips.rawValue:
                     NavigationView {
-                        DripsView()
+                        DripsView(activaCheckMyDrips: .constant(false))
                     }
                     .navigationViewStyle(.stack)
                 case Tab.fav.rawValue:
