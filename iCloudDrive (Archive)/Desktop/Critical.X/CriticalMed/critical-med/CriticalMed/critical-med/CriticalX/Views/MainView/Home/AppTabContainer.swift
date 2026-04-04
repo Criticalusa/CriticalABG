@@ -43,6 +43,9 @@ struct AppTabContainer: View {
                     CriticalHomePage()
                 }
             }
+            .safeAreaInset(edge: .bottom) {
+                Color.clear.frame(height: 90)
+            }
 
             // ── CUSTOM TAB BAR ──
             VStack {
