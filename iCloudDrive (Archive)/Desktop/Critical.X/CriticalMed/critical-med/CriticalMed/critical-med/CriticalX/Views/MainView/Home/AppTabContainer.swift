@@ -51,8 +51,8 @@ struct AppTabContainer: View {
                 // Fade gradient above bar
                 LinearGradient(
                     colors: colorScheme == .dark
-                        ? [CriticalDesign.Colors.cardBlue.opacity(0.95), CriticalDesign.Colors.cardBlue.opacity(0.8), Color.clear]
-                        : [Color.white, Color.white, Color.clear],
+                        ? [CriticalDesign.Colors.darkCanvas, CriticalDesign.Colors.darkCanvas.opacity(0.8), Color.clear]
+                        : [CriticalDesign.Adaptive.canvas(for: colorScheme), CriticalDesign.Adaptive.canvas(for: colorScheme).opacity(0.8), Color.clear],
                     startPoint: .bottom,
                     endPoint: .top
                 )
