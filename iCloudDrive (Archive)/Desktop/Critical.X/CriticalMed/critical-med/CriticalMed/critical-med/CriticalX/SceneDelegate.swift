@@ -50,7 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Wrap with theme support
         let rootView = ThemedRootView {
             if isUserAuthenticated {
-                AppTabContainer()
+                CriticalHomePage()
             } else {
                 SignupView()
             }
@@ -81,7 +81,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func showTabBarController() {
         let rootView = ThemedRootView {
-            AppTabContainer()
+            CriticalHomePage()
         }
         let hosting = UIHostingController(rootView: rootView)
         if SceneDelegate.themeManager.preferredColorScheme == .dark {
