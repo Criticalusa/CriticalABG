@@ -21,7 +21,7 @@ struct AppTabContainer: View {
                     CriticalHomePage()
                 case Tab.meds.rawValue:
                     NavigationView {
-                        ClinicalPharmacologyView()
+                        ClinicalPharmacologyView(isCardView: .constant(true))
                     }
                     .navigationViewStyle(.stack)
                 case Tab.peds.rawValue:
