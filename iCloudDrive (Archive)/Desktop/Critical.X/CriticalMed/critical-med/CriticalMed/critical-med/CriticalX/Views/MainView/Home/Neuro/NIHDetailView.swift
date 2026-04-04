@@ -3,1814 +3,772 @@
 //  CriticalX
 //
 //  Created by Macbook 7 on 29/12/2021.
+//  Updated with CriticalDesign neumorphic styling
 //
 
 import SwiftUI
-// import SwiftUITrackableScrollView
 
 struct NIHDetailView: View {
-    
-    @State private var scrollViewContentOffset = CGFloat(0)
-    
-    @State private var isSelected1_1 = false
-    @State private var isSelected1_2 = false
-    @State private var isSelected1_3 = false
-    @State private var isSelected1_4 = false
-    
-    @State private var isSelected2_1 = false
-    @State private var isSelected2_2 = false
-    @State private var isSelected2_3 = false
-    
-    @State private var isSelected3_1 = false
-    @State private var isSelected3_2 = false
-    @State private var isSelected3_3 = false
-    
-    @State private var isSelected4_1 = false
-    @State private var isSelected4_2 = false
-    @State private var isSelected4_3 = false
-    
-    @State private var isSelected5_1 = false
-    @State private var isSelected5_2 = false
-    @State private var isSelected5_3 = false
-    @State private var isSelected5_4 = false
-    
-    @State private var isSelected6_1 = false
-    @State private var isSelected6_2 = false
-    @State private var isSelected6_3 = false
-    @State private var isSelected6_4 = false
-    
-    @State private var isSelected7_1 = false
-    @State private var isSelected7_2 = false
-    @State private var isSelected7_3 = false
-    @State private var isSelected7_4 = false
-    @State private var isSelected7_5 = false
-    @State private var isSelected7_6 = false
-    
-    @State private var isSelected8_1 = false
-    @State private var isSelected8_2 = false
-    @State private var isSelected8_3 = false
-    @State private var isSelected8_4 = false
-    @State private var isSelected8_5 = false
-    @State private var isSelected8_6 = false
-    
-    @State private var isSelected9_1 = false
-    @State private var isSelected9_2 = false
-    @State private var isSelected9_3 = false
-    @State private var isSelected9_4 = false
-    @State private var isSelected9_5 = false
-    @State private var isSelected9_6 = false
-    
-    @State private var isSelected10_1 = false
-    @State private var isSelected10_2 = false
-    @State private var isSelected10_3 = false
-    @State private var isSelected10_4 = false
-    @State private var isSelected10_5 = false
-    @State private var isSelected10_6 = false
-    
-    @State private var isSelected11_1 = false
-    @State private var isSelected11_2 = false
-    @State private var isSelected11_3 = false
-    
-    @State private var isSelected12_1 = false
-    @State private var isSelected12_2 = false
-    @State private var isSelected12_3 = false
-    
-    @State private var isSelected13_1 = false
-    @State private var isSelected13_2 = false
-    @State private var isSelected13_3 = false
-    @State private var isSelected13_4 = false
-    
-    @State private var isSelected14_1 = false
-    @State private var isSelected14_2 = false
-    @State private var isSelected14_3 = false
-    @State private var isSelected14_4 = false
-    
-    @State private var isSelected15_1 = false
-    @State private var isSelected15_2 = false
-    @State private var isSelected15_3 = false
-    
-    @State private var totalCount = 0
-    @State private var count1 = 0
-    @State private var count2 = 0
-    @State private var count3 = 0
-    @State private var count4 = 0
-    @State private var count5 = 0
-    @State private var count6 = 0
-    @State private var count7 = 0
-    @State private var count8 = 0
-    @State private var count9 = 0
-    @State private var count10 = 0
-    @State private var count11 = 0
-    @State private var count12 = 0
-    @State private var count13 = 0
-    @State private var count14 = 0
-    @State private var count15 = 0
-    
-    @State private var interpretationLabel = "No stroke symptoms"
-    @State private var labelColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-    
-    var body: some View {
-        
-       
-        ZStack {
-            Color.mainBackgroundColor.edgesIgnoringSafeArea(.all)
-            VStack(spacing: 0){
-                VStack{
-                    Text("NIH Stroke Score")
-                        .font(.system(size: 50).weight(.regular))
-                        .foregroundColor(Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 1)))
-                }.padding()
-                
-                ZStack{
-                    // Scrollreader gets position so you can scoll to certain segments using a button.
-                    ScrollViewReader { scrollproxy in
-                      
-                    TrackableScrollView(.vertical, showIndicators: false, contentOffset: $scrollViewContentOffset){
-                       
-                        Text("\(totalCount)")
-                            .font(.system(size: 55).weight(.regular))
-                            .foregroundColor(Color.royal_blue)
-                            .padding(.all, 5)
-                       
-                        Text(interpretationLabel)
-                            .foregroundColor(Color(labelColor))
-                            .font(.system(size: 20).weight(.medium))
+    @Environment(\.colorScheme) var colorScheme
+    @State private var isAppearing = false
+    @State private var showFloatingScore = false
+    @State private var scoreCardScrolledOut = false
+    @State private var previousScore: Int = 0
 
-                       
-                        VStack{
-                            Group {
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("1A: Level of Consciousness")
-                                            .font(.title3)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color.red)
-                                    
-                                    Button(action: {
-                                        initView1(index: 1)
-                                        count1 = isSelected1_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Alert - 0")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected1_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView1(index: 2)
-                                        count1 = isSelected1_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Drowsy - 1")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected1_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView1(index: 3)
-                                        count1 = isSelected1_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Obtunded - 2")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected1_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView1(index: 4)
-                                        count1 = isSelected1_4 ? 3 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Comatose - 3")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected1_4 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                
-                                VStack(spacing: 15){
-                                    
-                                    HStack{
-                                        Text("1B: Asks Month & Age")
-                                            .font(.title3)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color.red)
-                                    
-                                    
-                                    
-                                    Button(action: {
-                                        initView2(index: 1)
-                                        count2 = isSelected2_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Both answered correctly - 0")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected2_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    
-                                    
-                                    Button(action: {
-                                        initView2(index: 2)
-                                        count2 = isSelected2_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("One answered correctly - 1")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected2_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    
-                                    
-                                    Button(action: {
-                                        initView2(index: 3)
-                                        count2 = isSelected2_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Neither answered correctly - 2")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected2_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("1C: Blinks Eyes & Squeezes Hands")
-                                            .font(.title3)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color.red)
-                                    
-                                    
-                                    Button(action: {
-                                        initView3(index: 1)
-                                        count3 = isSelected3_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Both performed correctly - 0")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected3_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView3(index: 2)
-                                        count3 = isSelected3_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("One performed correctly - 1")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected3_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView3(index: 3)
-                                        count3 = isSelected3_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Neither performed correctly - 2")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected3_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("2: Horizontal Eye Movement")
-                                            .font(.title3)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color(UIColor.component(red: 78, green: 78, blue: 78, opacity: 1)))
-                                    
-                                    Button(action: {
-                                        initView4(index: 1)
-                                        count4 = isSelected4_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Normal - 0")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected4_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView4(index: 2)
-                                        count4 = isSelected4_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Mild Gaze - 1")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected4_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView4(index: 3)
-                                        count4 = isSelected4_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Complete Gaze - 2")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected4_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("3: Visual Fields: See objects in 4 quadrants")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 16))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color.criticalBabyBlue)
-                                    
-                                    Button(action: {
-                                        initView5(index: 1)
-                                        count5 = isSelected5_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Normal - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected5_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView5(index: 2)
-                                        count5 = isSelected5_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Partial hemianopia - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected5_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView5(index: 3)
-                                        count5 = isSelected5_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Complete hemianopia - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected5_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView5(index: 4)
-                                        count5 = isSelected5_4 ? 3 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Bilateral hemianopia - 3")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected5_4 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                            }// group 1
-                            
-                            Group {
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("4: Facial palsy")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 18))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color(UIColor.component(red: 191, green: 134, blue: 178, opacity: 1)))
-                                    
-                                    Button(action: {
-                                        initView6(index: 1)
-                                        count6 = isSelected6_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Normal - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected6_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView6(index: 2)
-                                        count6 = isSelected6_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Minor Paralysis - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected6_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView6(index: 3)
-                                        count6 = isSelected6_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Partial Paralysis - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected6_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView6(index: 4)
-                                        count6 = isSelected6_4 ? 3 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Complete Paralysis - 3")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected6_4 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                                
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("5A: Left Arm: Hold arm straight out")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 18))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color(UIColor.component(red: 95, green: 140, blue: 216, opacity: 1)))
-                                    
-                                    Button(action: {
-                                        initView7(index: 1)
-                                        count7 = isSelected7_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Normal: No drifts - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected7_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView7(index: 2)
-                                        count7 = isSelected7_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Drifts downward but in < 10 sec - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected7_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView7(index: 3)
-                                        count7 = isSelected3_1 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Drifts to bed within 10 sec - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected7_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView7(index: 4)
-                                        count7 = isSelected7_4 ? 3 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Movement not against gravity - 3")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected7_4 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView7(index: 5)
-                                        count7 = isSelected7_5 ? 4 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Complete Paralysis - 4")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected7_5 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView7(index: 6)
-                                        count7 = isSelected7_6 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Amputation or fusion - N/A")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected7_6 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("5B: Right Arm: Hold arm straight out")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 18))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color(UIColor.component(red: 78, green: 78, blue: 78, opacity: 1)))
-                                    
-                                    Button(action: {
-                                        initView8(index: 1)
-                                        count8 = isSelected8_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Normal: No drifts - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected8_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView8(index: 2)
-                                        count8 = isSelected8_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Drifts downward but in < 10 sec - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected8_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView8(index: 3)
-                                        count8 = isSelected8_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Drifts to bed within 10 sec - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected8_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView8(index: 4)
-                                        count8 = isSelected8_4 ? 3 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Movement not against gravity - 3")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected8_4 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView8(index: 5)
-                                        count8 = isSelected8_5 ? 4 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Complete Paralysis - 4")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected8_5 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView8(index: 6)
-                                        count8 = isSelected8_6 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Amputation or fusion - N/A")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected8_6 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("6A: Left Leg: Keep leg off the bed")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 18))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color(UIColor.component(red: 95, green: 140, blue: 216, opacity: 1)))
-                                    
-                                    Button(action: {
-                                        initView9(index: 1)
-                                        count9 = isSelected9_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Normal: No drifts - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected9_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView9(index: 2)
-                                        count9 = isSelected9_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Drifts downward but in < 5 sec - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected9_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView9(index: 3)
-                                        count9 = isSelected9_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Drifts to bed within 5 sec - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected9_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView9(index: 4)
-                                        count9 = isSelected9_4 ? 3 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Movement not against gravity - 3")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected9_4 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView9(index: 5)
-                                        count9 = isSelected9_5 ? 4 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Complete Paralysis - 4")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected9_5 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView9(index: 6)
-                                        count9 = isSelected9_6 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Amputation or fusion - N/A")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected9_6 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("6B: Right Leg: Keep leg off the bed")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 18))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color(UIColor.component(red: 78, green: 78, blue: 78, opacity: 1)))
-                                    
-                                    Button(action: {
-                                        initView10(index: 1)
-                                        count10 = isSelected10_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Normal: No drifts - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected10_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView10(index: 2)
-                                        count10 = isSelected10_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Drifts downward but in < 5 sec - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected10_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView10(index: 3)
-                                        count10 = isSelected10_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Drifts to bed within 5 sec - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected10_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView10(index: 4)
-                                        count10 = isSelected10_4 ? 3 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Movement not against gravity - 3")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected10_4 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView10(index: 5)
-                                        count10 = isSelected10_5 ? 4 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Complete Paralysis - 4")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected10_5 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView10(index: 6)
-                                        count10 = isSelected10_6 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Amputation or Fusion - N/A")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected10_6 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                .padding(.bottom, 20)
-                                
-                            }// group 2
-                            
-                            Group {
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("7: Limb Ataxia - Finger to nose, Heel-knee-shin")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 15))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color(UIColor.component(red: 85, green: 170, blue: 104, opacity: 1)))
-                                    
-                                    Button(action: {
-                                        initView11(index: 1)
-                                        count11 = isSelected11_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Absent - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected11_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView11(index: 2)
-                                        count11 = isSelected11_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Present in one limb - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected11_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView11(index: 3)
-                                        count11 = isSelected11_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Present in two or more limbs - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected11_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("8: Sensation")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 18))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color(UIColor.component(red: 217, green: 130, blue: 59, opacity: 1)))
-                                    
-                                    Button(action: {
-                                        initView12(index: 1)
-                                        count12 = isSelected12_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Normal, no sensory loss - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected12_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView12(index: 2)
-                                        count12 = isSelected12_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Mild to Moderate - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected12_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView12(index: 3)
-                                        count12 = isSelected12_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Severe, complete loss of sensation - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected12_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("9: Language / Aphasia")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 18))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color(UIColor.component(red: 46, green: 46, blue: 46, opacity:  1)))
-                                    
-                                    Button(action: {
-                                        initView13(index: 1)
-                                        count13 = isSelected13_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Normal - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected13_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView13(index: 2)
-                                        count13 = isSelected13_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Mild to Moderate Aphasia - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected13_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView13(index: 3)
-                                        count13 = isSelected13_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Severe Aphasia - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected13_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView13(index: 4)
-                                        count13 = isSelected13_4 ? 3 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Mute - 3")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected13_4 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("10: Dysarthria")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 18))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color.yellowColor)
-                                    
-                                    Button(action: {
-                                        initView14(index: 1)
-                                        count14 = isSelected14_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Normal - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected14_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView14(index: 2)
-                                        count14 = isSelected14_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Mild to Moderate Slurred Speech - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected14_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView14(index: 3)
-                                        count14 = isSelected14_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Severe Aphasia - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected14_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView14(index: 4)
-                                        count14 = isSelected14_4 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Intubated or other physical barrier - N/A")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected14_4 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                
-                                
-                                VStack(spacing: 5){
-                                    
-                                    HStack{
-                                        Text("11: Neglect")
-                                            .font(.custom(AssetConstants.fontSFProHeavy, size: 18))
-                                            .foregroundColor(Color.white)
-                                            .padding(.leading, 15)
-                                        Spacer()
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 37)
-                                    .background(Color.red)
-                                    
-                                    Button(action: {
-                                        initView15(index: 1)
-                                        count15 = isSelected15_1 ? 0 : 0
-                                        calculation()
-                                    }) {
-                                        Text("No Abnormality - 0")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected15_1 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.top, 10)
-                                    
-                                    Button(action: {
-                                        initView15(index: 2)
-                                        count15 = isSelected15_2 ? 1 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Partial Neglect - 1")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected15_2 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    
-                                    Button(action: {
-                                        initView15(index: 3)
-                                        count15 = isSelected15_3 ? 2 : 0
-                                        calculation()
-                                    }) {
-                                        Text("Complete / Profound Neglect - 2")
-                                           .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(isSelected15_3 ? Color.red : Color.darkGray)
-                                            .frame(width: UIScreen.main.bounds.width * 0.90, height: 30)
-                                            .padding(.all, 5)
-                                    }
-                                    .padding(.bottom, 20)
-                                }
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                                .background(RoundedCornersShape(corners: [.bottomRight,.bottomLeft], radius: 8).fill(Color.white))
-                                .shadow(color: Color(UIColor.component(red: 29, green: 53, blue: 87, opacity: 0.05)), radius: 2, x: 0, y: 1)
-                                .shadow(radius: 8)
-                                .padding(.top, 10)
-                                .padding(.bottom, 30)
-                                
-                            }// group 3
-                            Button(action: { withAnimation { scrollproxy.scrollTo(.top)
-                            }}) {
-                                HStack {
-                                    Image (systemName: "arrow.up.to.line.circle.fill")
-                                        .font(.largeTitle)
-                                }
-                            }
-                            .padding()
-                                .font(.system(size: 18, weight: .bold, design: .default))
-                                .foregroundColor(Color.white).background(RoundedRectangle(cornerRadius: 8).fill(Color.royal_blue))
-                        }
-                        .padding(.bottom, 25)
-                    }
-                    .padding(.top, 15)
+    // MARK: - Scroll Animation State
+    @State private var scrollOffset: CGFloat = 0
+    @State private var initialScrollY: CGFloat? = nil
+
+    private let animationStartOffset: CGFloat = 40
+    private let animationEndOffset: CGFloat = 140
+
+    private var collapseProgress: CGFloat {
+        guard scrollOffset > animationStartOffset else { return 0 }
+        guard scrollOffset < animationEndOffset else { return 1 }
+        return (scrollOffset - animationStartOffset) / (animationEndOffset - animationStartOffset)
+    }
+
+    private var headerVisibility: CGFloat {
+        1 - collapseProgress
+    }
+
+    // Selection states for all 11 categories
+    @State private var selectedLOC: Int? = nil
+    @State private var selectedLOCQuestions: Int? = nil
+    @State private var selectedLOCCommands: Int? = nil
+    @State private var selectedGaze: Int? = nil
+    @State private var selectedVisual: Int? = nil
+    @State private var selectedFacial: Int? = nil
+    @State private var selectedMotorLeft: Int? = nil
+    @State private var selectedMotorRight: Int? = nil
+    @State private var selectedAtaxia: Int? = nil
+    @State private var selectedSensory: Int? = nil
+    @State private var selectedLanguage: Int? = nil
+    @State private var selectedDysarthria: Int? = nil
+    @State private var selectedNeglect: Int? = nil
+
+    private var totalScore: Int {
+        let scores = [selectedLOC, selectedLOCQuestions, selectedLOCCommands,
+                     selectedGaze, selectedVisual, selectedFacial,
+                     selectedMotorLeft, selectedMotorRight, selectedAtaxia,
+                     selectedSensory, selectedLanguage, selectedDysarthria, selectedNeglect]
+        return scores.compactMap { $0 }.reduce(0, +)
+    }
+
+    private var scoreInterpretation: (text: String, color: Color) {
+        if totalScore == 0 {
+            return ("No Stroke Symptoms", CriticalDesign.Colors.accentGreen)
+        } else if totalScore <= 4 {
+            return ("Minor Stroke", CriticalDesign.Colors.accentGreen)
+        } else if totalScore <= 15 {
+            return ("Moderate Stroke", CriticalDesign.Colors.accentOrange)
+        } else if totalScore <= 20 {
+            return ("Moderate to Severe Stroke", CriticalDesign.Colors.accentOrange)
+        } else {
+            return ("Severe Stroke", CriticalDesign.Colors.accentRed)
+        }
+    }
+
+    var body: some View {
+        ZStack(alignment: .top) {
+            CriticalDesign.Colors.canvas.ignoresSafeArea()
+
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: CriticalDesign.Spacing.lg) {
+                    // Header with scroll collapse animation
+                    headerSection
+                        .opacity(headerVisibility)
+                        .scaleEffect(1 - (collapseProgress * 0.1), anchor: .top)
+                        .offset(y: -collapseProgress * 20)
+                        .animation(.easeOut(duration: 0.15), value: collapseProgress)
+
+                    // Score card with scroll visibility tracking
+                    scoreDisplayCard
+                        .trackScrollVisibility(isHidden: $scoreCardScrolledOut)
+
+                    introCard
+
+                    // All 13 NIHSS Categories
+                    locCard
+                    locQuestionsCard
+                    locCommandsCard
+                    gazeCard
+                    visualCard
+                    facialCard
+                    motorLeftCard
+                    motorRightCard
+                    ataxiaCard
+                    sensoryCard
+                    languageCard
+                    dysarthriaCard
+                    neglectCard
+
+                    resetButton
+
+                    Spacer(minLength: CriticalDesign.Spacing.xl)
                 }
-                    if scrollViewContentOffset > 30 {
-                        VStack{
-                            ZStack{
-                                Circle()
-                                    .fill(Color.red)
-                                    .frame(width: 50, height: 50, alignment: .leading)
-                                Text("\(totalCount)")
-                                    .font(.system(size: 25).weight(.regular))
-                                    .foregroundColor(Color.white)
+                .padding(.vertical, CriticalDesign.Spacing.lg)
+                // Scroll tracking overlay
+                .overlay(
+                    GeometryReader { geo in
+                        Color.clear
+                            .onAppear {
+                                if initialScrollY == nil {
+                                    initialScrollY = geo.frame(in: .global).minY
+                                }
                             }
-                            Spacer()
-                        }
-                        .frame(width: UIScreen.main.bounds.width * 0.95, alignment: .leading)
-                        .shadow(radius: 8)
-                        .padding(.top, 30)
-                        
+                            .onChange(of: geo.frame(in: .global).minY) { newValue in
+                                if initialScrollY == nil {
+                                    initialScrollY = newValue
+                                }
+                                let offset = (initialScrollY ?? newValue) - newValue
+                                scrollOffset = max(0, offset)
+                            }
+                    }
+                )
+            }
+
+            // Floating Glass Score
+            if showFloatingScore {
+                floatingGlassScore
+                    .transition(.asymmetric(
+                        insertion: .scale(scale: 0.8).combined(with: .opacity).combined(with: .move(edge: .top)),
+                        removal: .scale(scale: 0.9).combined(with: .opacity)
+                    ))
+                    .zIndex(100)
+            }
+        }
+        .onAppear {
+            withAnimation(.easeOut(duration: 0.5)) {
+                isAppearing = true
+            }
+        }
+        .onChange(of: totalScore) { newValue in
+            if newValue != previousScore && newValue > 0 {
+                let haptic = UIImpactFeedbackGenerator(style: .medium)
+                haptic.impactOccurred()
+            }
+            previousScore = newValue
+            updateFloatingVisibility()
+        }
+        .onChange(of: scoreCardScrolledOut) { _ in
+            updateFloatingVisibility()
+        }
+    }
+
+    private func updateFloatingVisibility() {
+        let shouldShow = totalScore > 0 && scoreCardScrolledOut
+        if shouldShow != showFloatingScore {
+            withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
+                showFloatingScore = shouldShow
+            }
+        }
+    }
+
+    // MARK: - Floating Glass Score
+    private var floatingGlassScore: some View {
+        HStack(alignment: .center, spacing: CriticalDesign.Spacing.md) {
+            // Score circle with glow
+            ZStack {
+                Circle()
+                    .fill(scoreInterpretation.color.opacity(0.2))
+                    .frame(width: 46, height: 46)
+                    .blur(radius: 4)
+
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: [scoreInterpretation.color, scoreInterpretation.color.opacity(0.8)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 40, height: 40)
+                    .shadow(color: scoreInterpretation.color.opacity(0.4), radius: 6, x: 0, y: 3)
+
+                Text("\(totalScore)")
+                    .font(.custom("Poppins-Bold", size: 20))
+                    .foregroundColor(.white)
+                    .contentTransition(.numericText())
+            }
+
+            // Score details
+            VStack(alignment: .leading, spacing: 4) {
+                Text("NIHSS Score")
+                    .font(.custom("Poppins-Medium", size: 11))
+                    .foregroundColor(CriticalDesign.Adaptive.textSecondary(for: colorScheme))
+
+                Text(scoreInterpretation.text)
+                    .font(.custom("Poppins-SemiBold", size: 13))
+                    .foregroundColor(scoreInterpretation.color)
+                    .lineLimit(1)
+            }
+
+            Spacer()
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(.ultraThinMaterial)
+                .shadow(color: Color.black.opacity(0.08), radius: 8, x: 0, y: 3)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.white.opacity(0.4), lineWidth: 1)
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+        .padding(.top, 8)
+    }
+
+    // MARK: - Header Section
+    private var headerSection: some View {
+        VStack(spacing: CriticalDesign.Spacing.md) {
+            GradientEdgeFadeImage(imageName: "icon-neuro", size: 120)
+
+            Text("NIH Stroke Scale")
+                .font(.custom("Poppins-Bold", size: 28))
+                .foregroundColor(CriticalDesign.Colors.cardBlue)
+
+            Text("National Institutes of Health")
+                .font(.custom("Poppins-Medium", size: 14))
+                .foregroundColor(CriticalDesign.Adaptive.textSecondary(for: colorScheme))
+        }
+    }
+
+    // MARK: - Score Display Card
+    private var scoreDisplayCard: some View {
+        HStack(spacing: CriticalDesign.Spacing.lg) {
+            ZStack {
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: [scoreInterpretation.color, scoreInterpretation.color.opacity(0.8)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 80, height: 80)
+                    .shadow(color: scoreInterpretation.color.opacity(0.4), radius: 8, x: 0, y: 4)
+
+                Text("\(totalScore)")
+                    .font(.custom("Poppins-Bold", size: 36))
+                    .foregroundColor(.white)
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Total NIHSS Score")
+                    .font(.custom("Poppins-Bold", size: 18))
+                    .foregroundColor(CriticalDesign.Adaptive.textPrimary(for: colorScheme))
+
+                Text(scoreInterpretation.text)
+                    .font(.custom("Poppins-SemiBold", size: 14))
+                    .foregroundColor(scoreInterpretation.color)
+
+                Text("Max Score: 42")
+                    .font(.custom("Poppins-Regular", size: 12))
+                    .foregroundColor(CriticalDesign.Adaptive.textTertiary(for: colorScheme))
+            }
+
+            Spacer()
+        }
+        .padding(CriticalDesign.Spacing.lg)
+        .background(
+            Group {
+                if colorScheme == .dark {
+                    RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                        .fill(CriticalDesign.Colors.cardBlue)
+                } else {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                            .fill(
+                                LinearGradient(
+                                    colors: [Color.white.opacity(0.95), CriticalDesign.Colors.canvas],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+
+                        RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                            .fill(Color.clear)
+                            .shadow(color: Color.black.opacity(0.12), radius: 10, x: 5, y: 5)
+                            .shadow(color: Color.white.opacity(0.95), radius: 10, x: -5, y: -5)
                     }
                 }
             }
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                .stroke(colorScheme == .dark ? CriticalDesign.Colors.gold.opacity(0.3) : Color.white.opacity(0.6), lineWidth: 1)
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - Intro Card
+    private var introCard: some View {
+        Text(CriticalDesign.markdownToAttributedString("""
+        The **NIHSS** quantifies stroke severity by assessing level of consciousness, eye movements, visual fields, facial palsy, motor strength, ataxia, sensory function, language, dysarthria, and neglect.
+
+        A higher score indicates **more severe impairment**. Use this scale to track changes over time and guide treatment decisions.
+        """))
+            .font(.custom("Poppins-Regular", size: 14))
+            .foregroundColor(CriticalDesign.Adaptive.textSecondary(for: colorScheme))
+            .lineSpacing(5)
+            .padding(CriticalDesign.Spacing.lg)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                Group {
+                    if colorScheme == .dark {
+                        RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                            .fill(CriticalDesign.Colors.cardBlue)
+                    } else {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                                .fill(
+                                    LinearGradient(
+                                        colors: [Color.white.opacity(0.95), CriticalDesign.Colors.canvas],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
+                                )
+
+                            RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                                .fill(Color.clear)
+                                .shadow(color: Color.black.opacity(0.12), radius: 10, x: 5, y: 5)
+                                .shadow(color: Color.white.opacity(0.95), radius: 10, x: -5, y: -5)
+                        }
+                    }
+                }
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                    .stroke(colorScheme == .dark ? CriticalDesign.Colors.gold.opacity(0.3) : Color.white.opacity(0.6), lineWidth: 1)
+            )
+            .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 1a. LOC Card
+    private var locCard: some View {
+        NIHSSNeumorphicCard(
+            number: "1a",
+            title: "Level of Consciousness",
+            selectedScore: selectedLOC,
+            options: [
+                (0, "Alert; keenly responsive"),
+                (1, "Not alert; but arousable by minor stimulation"),
+                (2, "Not alert; requires repeated stimulation"),
+                (3, "Responds only with reflex motor or autonomic effects")
+            ],
+            accentColor: CriticalDesign.Colors.accentRed,
+            onSelect: { selectedLOC = selectedLOC == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 1b. LOC Questions Card
+    private var locQuestionsCard: some View {
+        NIHSSNeumorphicCard(
+            number: "1b",
+            title: "LOC Questions",
+            subtitle: "Ask patient the month and their age",
+            selectedScore: selectedLOCQuestions,
+            options: [
+                (0, "Answers both questions correctly"),
+                (1, "Answers one question correctly"),
+                (2, "Answers neither question correctly")
+            ],
+            accentColor: CriticalDesign.Colors.accentOrange,
+            onSelect: { selectedLOCQuestions = selectedLOCQuestions == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 1c. LOC Commands Card
+    private var locCommandsCard: some View {
+        NIHSSNeumorphicCard(
+            number: "1c",
+            title: "LOC Commands",
+            subtitle: "Ask patient to open/close eyes and grip/release hand",
+            selectedScore: selectedLOCCommands,
+            options: [
+                (0, "Performs both tasks correctly"),
+                (1, "Performs one task correctly"),
+                (2, "Performs neither task correctly")
+            ],
+            accentColor: CriticalDesign.Colors.accentGreen,
+            onSelect: { selectedLOCCommands = selectedLOCCommands == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 2. Best Gaze Card
+    private var gazeCard: some View {
+        NIHSSNeumorphicCard(
+            number: "2",
+            title: "Best Gaze",
+            subtitle: "Horizontal eye movements only",
+            selectedScore: selectedGaze,
+            options: [
+                (0, "Normal"),
+                (1, "Partial gaze palsy"),
+                (2, "Forced deviation or total gaze paresis")
+            ],
+            accentColor: CriticalDesign.Colors.accentBlue,
+            onSelect: { selectedGaze = selectedGaze == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 3. Visual Card
+    private var visualCard: some View {
+        NIHSSNeumorphicCard(
+            number: "3",
+            title: "Visual Fields",
+            subtitle: "Test by confrontation",
+            selectedScore: selectedVisual,
+            options: [
+                (0, "No visual loss"),
+                (1, "Partial hemianopia"),
+                (2, "Complete hemianopia"),
+                (3, "Bilateral hemianopia (blind)")
+            ],
+            accentColor: CriticalDesign.Colors.accentPurple,
+            onSelect: { selectedVisual = selectedVisual == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 4. Facial Palsy Card
+    private var facialCard: some View {
+        NIHSSNeumorphicCard(
+            number: "4",
+            title: "Facial Palsy",
+            subtitle: "Ask patient to show teeth or smile",
+            selectedScore: selectedFacial,
+            options: [
+                (0, "Normal symmetrical movements"),
+                (1, "Minor paralysis (flattened nasolabial fold)"),
+                (2, "Partial paralysis (lower face)"),
+                (3, "Complete paralysis (one or both sides)")
+            ],
+            accentColor: CriticalDesign.Colors.accentTeal,
+            onSelect: { selectedFacial = selectedFacial == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 5a. Motor Left Arm Card
+    private var motorLeftCard: some View {
+        NIHSSNeumorphicCard(
+            number: "5a",
+            title: "Motor Arm - Left",
+            subtitle: "Arm extended 90° (sitting) or 45° (supine) for 10 sec",
+            selectedScore: selectedMotorLeft,
+            options: [
+                (0, "No drift; holds arm for full 10 seconds"),
+                (1, "Drift; holds arm but drifts before 10 seconds"),
+                (2, "Some effort against gravity"),
+                (3, "No effort against gravity; limb falls"),
+                (4, "No movement")
+            ],
+            accentColor: CriticalDesign.Colors.accentRed,
+            onSelect: { selectedMotorLeft = selectedMotorLeft == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 5b. Motor Right Arm Card
+    private var motorRightCard: some View {
+        NIHSSNeumorphicCard(
+            number: "5b",
+            title: "Motor Arm - Right",
+            subtitle: "Arm extended 90° (sitting) or 45° (supine) for 10 sec",
+            selectedScore: selectedMotorRight,
+            options: [
+                (0, "No drift; holds arm for full 10 seconds"),
+                (1, "Drift; holds arm but drifts before 10 seconds"),
+                (2, "Some effort against gravity"),
+                (3, "No effort against gravity; limb falls"),
+                (4, "No movement")
+            ],
+            accentColor: CriticalDesign.Colors.accentOrange,
+            onSelect: { selectedMotorRight = selectedMotorRight == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 7. Limb Ataxia Card
+    private var ataxiaCard: some View {
+        NIHSSNeumorphicCard(
+            number: "7",
+            title: "Limb Ataxia",
+            subtitle: "Finger-nose-finger and heel-shin tests",
+            selectedScore: selectedAtaxia,
+            options: [
+                (0, "Absent"),
+                (1, "Present in one limb"),
+                (2, "Present in two limbs")
+            ],
+            accentColor: CriticalDesign.Colors.accentGreen,
+            onSelect: { selectedAtaxia = selectedAtaxia == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 8. Sensory Card
+    private var sensoryCard: some View {
+        NIHSSNeumorphicCard(
+            number: "8",
+            title: "Sensory",
+            subtitle: "Test sensation with pinprick",
+            selectedScore: selectedSensory,
+            options: [
+                (0, "Normal; no sensory loss"),
+                (1, "Mild-moderate sensory loss"),
+                (2, "Severe or total sensory loss")
+            ],
+            accentColor: CriticalDesign.Colors.accentBlue,
+            onSelect: { selectedSensory = selectedSensory == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 9. Best Language Card
+    private var languageCard: some View {
+        NIHSSNeumorphicCard(
+            number: "9",
+            title: "Best Language",
+            subtitle: "Have patient describe picture, name items, read sentences",
+            selectedScore: selectedLanguage,
+            options: [
+                (0, "No aphasia; normal"),
+                (1, "Mild-moderate aphasia"),
+                (2, "Severe aphasia"),
+                (3, "Mute; global aphasia; no usable speech")
+            ],
+            accentColor: CriticalDesign.Colors.accentPurple,
+            onSelect: { selectedLanguage = selectedLanguage == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 10. Dysarthria Card
+    private var dysarthriaCard: some View {
+        NIHSSNeumorphicCard(
+            number: "10",
+            title: "Dysarthria",
+            subtitle: "Have patient read or repeat words",
+            selectedScore: selectedDysarthria,
+            options: [
+                (0, "Normal"),
+                (1, "Mild-moderate; slurs some words"),
+                (2, "Severe; nearly unintelligible or worse")
+            ],
+            accentColor: CriticalDesign.Colors.accentTeal,
+            onSelect: { selectedDysarthria = selectedDysarthria == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - 11. Extinction/Inattention Card
+    private var neglectCard: some View {
+        NIHSSNeumorphicCard(
+            number: "11",
+            title: "Extinction / Inattention",
+            subtitle: "Use double simultaneous stimulation",
+            selectedScore: selectedNeglect,
+            options: [
+                (0, "No abnormality"),
+                (1, "Visual, tactile, auditory, or spatial inattention"),
+                (2, "Profound hemi-inattention or neglect")
+            ],
+            accentColor: CriticalDesign.Colors.accentRed,
+            onSelect: { selectedNeglect = selectedNeglect == $0 ? nil : $0 }
+        )
+        .padding(.horizontal, CriticalDesign.Spacing.lg)
+    }
+
+    // MARK: - Reset Button
+    private var resetButton: some View {
+        Button(action: {
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                selectedLOC = nil
+                selectedLOCQuestions = nil
+                selectedLOCCommands = nil
+                selectedGaze = nil
+                selectedVisual = nil
+                selectedFacial = nil
+                selectedMotorLeft = nil
+                selectedMotorRight = nil
+                selectedAtaxia = nil
+                selectedSensory = nil
+                selectedLanguage = nil
+                selectedDysarthria = nil
+                selectedNeglect = nil
+            }
+        }) {
+            HStack(spacing: 8) {
+                Image(systemName: "arrow.counterclockwise")
+                    .font(.system(size: 16, weight: .semibold))
+                Text("Reset All")
+                    .font(.custom("Poppins-SemiBold", size: 16))
+            }
+            .foregroundColor(CriticalDesign.Adaptive.textSecondary(for: colorScheme))
+            .padding(.vertical, 14)
+            .padding(.horizontal, 28)
+            .background(
+                Group {
+                    if colorScheme == .dark {
+                        RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                            .fill(CriticalDesign.Colors.cardBlue)
+                    } else {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                                .fill(
+                                    LinearGradient(
+                                        colors: [Color.white.opacity(0.95), CriticalDesign.Colors.canvas],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
+                                )
+
+                            RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                                .fill(Color.clear)
+                                .shadow(color: Color.black.opacity(0.12), radius: 10, x: 5, y: 5)
+                                .shadow(color: Color.white.opacity(0.95), radius: 10, x: -5, y: -5)
+                        }
+                    }
+                }
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                    .stroke(colorScheme == .dark ? CriticalDesign.Colors.gold.opacity(0.3) : Color.white.opacity(0.6), lineWidth: 1)
+            )
         }
-         
     }
 }
 
-struct NIHDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        NIHDetailView()
+// MARK: - NIHSS Neumorphic Card Component
+private struct NIHSSNeumorphicCard: View {
+    @Environment(\.colorScheme) var colorScheme
+    let number: String
+    let title: String
+    var subtitle: String? = nil
+    let selectedScore: Int?
+    let options: [(Int, String)]
+    let accentColor: Color
+    let onSelect: (Int) -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: CriticalDesign.Spacing.md) {
+            // Header Row
+            HStack {
+                HStack(spacing: CriticalDesign.Spacing.sm) {
+                    Text(number)
+                        .font(.custom("Poppins-Bold", size: 14))
+                        .foregroundColor(.white)
+                        .frame(width: 32, height: 32)
+                        .background(Circle().fill(accentColor))
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(title)
+                            .font(.custom("Poppins-Bold", size: 17))
+                            .foregroundColor(CriticalDesign.Adaptive.textPrimary(for: colorScheme))
+
+                        if let subtitle = subtitle {
+                            Text(subtitle)
+                                .font(.custom("Poppins-Medium", size: 12))
+                                .foregroundColor(CriticalDesign.Colors.accentGreen)
+                        }
+                    }
+                }
+
+                Spacer()
+
+                Text("\(selectedScore ?? 0)")
+                    .font(.custom("Poppins-Bold", size: 24))
+                    .foregroundColor(CriticalDesign.Adaptive.textPrimary(for: colorScheme))
+                    .frame(width: 44, height: 44)
+                    .background(
+                        Circle()
+                            .fill(accentColor.opacity(0.12))
+                    )
+            }
+
+            // Options
+            VStack(spacing: CriticalDesign.Spacing.sm) {
+                ForEach(options, id: \.0) { option in
+                    Button(action: {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                            onSelect(option.0)
+                        }
+                    }) {
+                        HStack(spacing: CriticalDesign.Spacing.md) {
+                            Text("\(option.0)")
+                                .font(.custom("Poppins-Bold", size: 13))
+                                .foregroundColor(selectedScore == option.0 ? .white : accentColor)
+                                .frame(width: 28, height: 28)
+                                .background(
+                                    Circle()
+                                        .fill(selectedScore == option.0 ? accentColor : accentColor.opacity(0.12))
+                                )
+
+                            Text(option.1)
+                                .font(.custom("Poppins-Regular", size: 14))
+                                .foregroundColor(selectedScore == option.0 ? CriticalDesign.Colors.primary : CriticalDesign.Colors.secondary)
+                                .multilineTextAlignment(.leading)
+
+                            Spacer()
+
+                            if selectedScore == option.0 {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .font(.system(size: 18))
+                                    .foregroundColor(accentColor)
+                            }
+                        }
+                        .padding(CriticalDesign.Spacing.md)
+                        .background(
+                            RoundedRectangle(cornerRadius: CriticalDesign.Radius.md)
+                                .fill(selectedScore == option.0 ? accentColor.opacity(0.08) : CriticalDesign.Colors.canvas.opacity(0.5))
+                        )
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+        }
+        .padding(CriticalDesign.Spacing.lg)
+        .background(
+            Group {
+                if colorScheme == .dark {
+                    RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                        .fill(CriticalDesign.Colors.cardBlue)
+                } else {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                            .fill(
+                                LinearGradient(
+                                    colors: [Color.white.opacity(0.95), CriticalDesign.Colors.canvas],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+
+                        RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                            .fill(Color.clear)
+                            .shadow(color: Color.black.opacity(0.12), radius: 10, x: 5, y: 5)
+                            .shadow(color: Color.white.opacity(0.95), radius: 10, x: -5, y: -5)
+                    }
+                }
+            }
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: CriticalDesign.Radius.lg)
+                .stroke(colorScheme == .dark ? CriticalDesign.Colors.gold.opacity(0.3) : Color.white.opacity(0.6), lineWidth: 1)
+        )
     }
 }
 
-extension NIHDetailView {
-    
-    func initView1(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected1_1 = !isSelected1_1
-            isSelected1_2 = false
-            isSelected1_3 = false
-            isSelected1_4 = false
-        case 2:
-            isSelected1_2 = !isSelected1_2
-            isSelected1_1 = false
-            isSelected1_3 = false
-            isSelected1_4 = false
-        case 3:
-            isSelected1_3 = !isSelected1_3
-            isSelected1_2 = false
-            isSelected1_1 = false
-            isSelected1_4 = false
-        case 4:
-            isSelected1_4 = !isSelected1_4
-            isSelected1_2 = false
-            isSelected1_3 = false
-            isSelected1_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView2(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected2_1 = !isSelected2_1
-            isSelected2_2 = false
-            isSelected2_3 = false
-        case 2:
-            isSelected2_2 = !isSelected2_2
-            isSelected2_1 = false
-            isSelected2_3 = false
-        case 3:
-            isSelected2_3 = !isSelected2_3
-            isSelected2_2 = false
-            isSelected2_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView3(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected3_1 = !isSelected3_1
-            isSelected3_2 = false
-            isSelected3_3 = false
-        case 2:
-            isSelected3_2 = !isSelected3_2
-            isSelected3_1 = false
-            isSelected3_3 = false
-        case 3:
-            isSelected3_3 = !isSelected3_3
-            isSelected3_2 = false
-            isSelected3_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView4(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected4_1 = !isSelected4_1
-            isSelected4_2 = false
-            isSelected4_3 = false
-        case 2:
-            isSelected4_2 = !isSelected4_2
-            isSelected4_1 = false
-            isSelected4_3 = false
-        case 3:
-            isSelected4_3 = !isSelected4_3
-            isSelected4_2 = false
-            isSelected4_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView6(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected6_1 = !isSelected6_1
-            isSelected6_2 = false
-            isSelected6_3 = false
-            isSelected6_4 = false
-        case 2:
-            isSelected6_2 = !isSelected6_2
-            isSelected6_1 = false
-            isSelected6_3 = false
-            isSelected6_4 = false
-        case 3:
-            isSelected6_3 = !isSelected6_3
-            isSelected6_2 = false
-            isSelected6_1 = false
-            isSelected6_4 = false
-        case 4:
-            isSelected6_4 = !isSelected6_4
-            isSelected6_2 = false
-            isSelected6_3 = false
-            isSelected6_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView5(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected5_1 = !isSelected5_1
-            isSelected5_2 = false
-            isSelected5_3 = false
-            isSelected5_4 = false
-        case 2:
-            isSelected5_2 = !isSelected5_2
-            isSelected5_1 = false
-            isSelected5_3 = false
-            isSelected5_4 = false
-        case 3:
-            isSelected5_3 = !isSelected5_3
-            isSelected5_2 = false
-            isSelected5_1 = false
-            isSelected5_4 = false
-        case 4:
-            isSelected5_4 = !isSelected5_4
-            isSelected5_2 = false
-            isSelected5_3 = false
-            isSelected5_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView7(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected7_1 = !isSelected7_1
-            isSelected7_2 = false
-            isSelected7_3 = false
-            isSelected7_4 = false
-            isSelected7_5 = false
-            isSelected7_6 = false
-        case 2:
-            isSelected7_2 = !isSelected7_2
-            isSelected7_1 = false
-            isSelected7_3 = false
-            isSelected7_4 = false
-            isSelected7_5 = false
-            isSelected7_6 = false
-        case 3:
-            isSelected7_3 = !isSelected7_3
-            isSelected7_2 = false
-            isSelected7_1 = false
-            isSelected7_4 = false
-            isSelected7_5 = false
-            isSelected7_6 = false
-        case 4:
-            isSelected7_4 = !isSelected7_4
-            isSelected7_2 = false
-            isSelected7_3 = false
-            isSelected7_1 = false
-            isSelected7_5 = false
-            isSelected7_6 = false
-        case 5:
-            isSelected7_5 = !isSelected7_5
-            isSelected7_2 = false
-            isSelected7_3 = false
-            isSelected7_4 = false
-            isSelected7_1 = false
-            isSelected7_6 = false
-        case 6:
-            isSelected7_6 = !isSelected7_6
-            isSelected7_2 = false
-            isSelected7_3 = false
-            isSelected7_4 = false
-            isSelected7_5 = false
-            isSelected7_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView8(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected8_1 = !isSelected8_1
-            isSelected8_2 = false
-            isSelected8_3 = false
-            isSelected8_4 = false
-            isSelected8_5 = false
-            isSelected8_6 = false
-        case 2:
-            isSelected8_2 = !isSelected8_2
-            isSelected8_1 = false
-            isSelected8_3 = false
-            isSelected8_4 = false
-            isSelected8_5 = false
-            isSelected8_6 = false
-        case 3:
-            isSelected8_3 = !isSelected8_3
-            isSelected8_2 = false
-            isSelected8_1 = false
-            isSelected8_4 = false
-            isSelected8_5 = false
-            isSelected8_6 = false
-        case 4:
-            isSelected8_4 = !isSelected8_4
-            isSelected8_2 = false
-            isSelected8_3 = false
-            isSelected8_1 = false
-            isSelected8_5 = false
-            isSelected8_6 = false
-        case 5:
-            isSelected8_5 = !isSelected8_5
-            isSelected8_2 = false
-            isSelected8_3 = false
-            isSelected8_4 = false
-            isSelected8_1 = false
-            isSelected8_6 = false
-        case 6:
-            isSelected8_6 = !isSelected8_6
-            isSelected8_2 = false
-            isSelected8_3 = false
-            isSelected8_4 = false
-            isSelected8_5 = false
-            isSelected8_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView9(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected9_1 = !isSelected9_1
-            isSelected9_2 = false
-            isSelected9_3 = false
-            isSelected9_4 = false
-            isSelected9_5 = false
-            isSelected9_6 = false
-        case 2:
-            isSelected9_2 = !isSelected9_2
-            isSelected9_1 = false
-            isSelected9_3 = false
-            isSelected9_4 = false
-            isSelected9_5 = false
-            isSelected9_6 = false
-        case 3:
-            isSelected9_3 = !isSelected9_3
-            isSelected9_2 = false
-            isSelected9_1 = false
-            isSelected9_4 = false
-            isSelected9_5 = false
-            isSelected9_6 = false
-        case 4:
-            isSelected9_4 = !isSelected9_4
-            isSelected9_2 = false
-            isSelected9_3 = false
-            isSelected9_1 = false
-            isSelected9_5 = false
-            isSelected9_6 = false
-        case 5:
-            isSelected9_5 = !isSelected9_5
-            isSelected9_2 = false
-            isSelected9_3 = false
-            isSelected9_4 = false
-            isSelected9_1 = false
-            isSelected9_6 = false
-        case 6:
-            isSelected9_6 = !isSelected9_6
-            isSelected9_2 = false
-            isSelected9_3 = false
-            isSelected9_4 = false
-            isSelected9_5 = false
-            isSelected9_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView10(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected10_1 = !isSelected10_1
-            isSelected10_2 = false
-            isSelected10_3 = false
-            isSelected10_4 = false
-            isSelected10_5 = false
-            isSelected10_6 = false
-        case 2:
-            isSelected10_2 = !isSelected10_2
-            isSelected10_1 = false
-            isSelected10_3 = false
-            isSelected10_4 = false
-            isSelected10_5 = false
-            isSelected10_6 = false
-        case 3:
-            isSelected10_3 = !isSelected10_3
-            isSelected10_2 = false
-            isSelected10_1 = false
-            isSelected10_4 = false
-            isSelected10_5 = false
-            isSelected10_6 = false
-        case 4:
-            isSelected10_4 = !isSelected10_4
-            isSelected10_2 = false
-            isSelected10_3 = false
-            isSelected10_1 = false
-            isSelected10_5 = false
-            isSelected10_6 = false
-        case 5:
-            isSelected10_5 = !isSelected10_5
-            isSelected10_2 = false
-            isSelected10_3 = false
-            isSelected10_4 = false
-            isSelected10_1 = false
-            isSelected10_6 = false
-        case 6:
-            isSelected10_6 = !isSelected10_6
-            isSelected10_2 = false
-            isSelected10_3 = false
-            isSelected10_4 = false
-            isSelected10_5 = false
-            isSelected10_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView11(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected11_1 = !isSelected11_1
-            isSelected11_2 = false
-            isSelected11_3 = false
-        case 2:
-            isSelected11_2 = !isSelected11_2
-            isSelected11_1 = false
-            isSelected11_3 = false
-        case 3:
-            isSelected11_3 = !isSelected11_3
-            isSelected11_2 = false
-            isSelected11_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView12(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected12_1 = !isSelected12_1
-            isSelected12_2 = false
-            isSelected12_3 = false
-        case 2:
-            isSelected12_2 = !isSelected12_2
-            isSelected12_1 = false
-            isSelected12_3 = false
-        case 3:
-            isSelected12_3 = !isSelected12_3
-            isSelected12_2 = false
-            isSelected12_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView13(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected13_1 = !isSelected13_1
-            isSelected13_2 = false
-            isSelected13_3 = false
-            isSelected13_4 = false
-        case 2:
-            isSelected13_2 = !isSelected13_2
-            isSelected13_1 = false
-            isSelected13_3 = false
-            isSelected13_4 = false
-        case 3:
-            isSelected13_3 = !isSelected13_3
-            isSelected13_2 = false
-            isSelected13_1 = false
-            isSelected13_4 = false
-        case 4:
-            isSelected13_4 = !isSelected13_4
-            isSelected13_2 = false
-            isSelected13_3 = false
-            isSelected13_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView14(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected14_1 = !isSelected14_1
-            isSelected14_2 = false
-            isSelected14_3 = false
-            isSelected14_4 = false
-        case 2:
-            isSelected14_2 = !isSelected14_2
-            isSelected14_1 = false
-            isSelected14_3 = false
-            isSelected14_4 = false
-        case 3:
-            isSelected14_3 = !isSelected14_3
-            isSelected14_2 = false
-            isSelected14_1 = false
-            isSelected14_4 = false
-        case 4:
-            isSelected14_4 = !isSelected14_4
-            isSelected14_2 = false
-            isSelected14_3 = false
-            isSelected14_1 = false
-        default:
-            break
-        }
-    }
-    
-    func initView15(index: Int){
-        
-        switch index {
-        case 1:
-            isSelected15_1 = !isSelected15_1
-            isSelected15_2 = false
-            isSelected15_3 = false
-        case 2:
-            isSelected15_2 = !isSelected15_2
-            isSelected15_1 = false
-            isSelected15_3 = false
-        case 3:
-            isSelected15_3 = !isSelected15_3
-            isSelected15_2 = false
-            isSelected15_1 = false
-        default:
-            break
-        }
-    }
-    
-    func calculation(){
-        
-        totalCount = count1 + count2 + count3 + count4 + count5 + count6 + count7 + count8 + count9 + count10 + count11 + count12 + count13 + count14 + count15
-        
-        switch totalCount {
-        
-        case 0 :
-            
-            interpretationLabel = "No stroke symptoms"
-            labelColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-        
-        case 1...4 :
-            
-            interpretationLabel = "Minor stroke"
-            labelColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
-        
-        case 5...15 :
-            
-            interpretationLabel = "Moderate stroke"
-            labelColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-        
-        case 16...20:
-            
-            interpretationLabel = "Moderate to severe stroke"
-            labelColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        
-        case 21...42 :
-           
-            interpretationLabel = "Severe stroke"
-            labelColor = #colorLiteral(red: 0.8156862745, green: 0.2549019608, blue: 0.2549019608, alpha: 1)
-            
-        default:
-            break
-        }
-    }
+// MARK: - Preview
+#Preview {
+    NIHDetailView()
 }
