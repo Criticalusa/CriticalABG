@@ -929,9 +929,9 @@ struct CriticalHomePage: View {
             .sheet(isPresented: $showSettings) {
                 SettingsView(userSettings: userSettings)
             }
-            // MARK: Co-Pilot (wand → MomentsHubView)
+            // MARK: Moment Search (wand → Co-Pilot)
             .sheet(isPresented: $showMomentSearch) {
-                MomentsHubView()
+                NLMomentSearchView()
             }
             // MARK: Universal Search
             .sheet(isPresented: $showUniversalSearch) {

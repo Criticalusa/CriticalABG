@@ -107,7 +107,7 @@ struct NLMomentSearchView: View {
                         .foregroundColor(CriticalDesign.Colors.cardBlue)
                         .tracking(1.5)
                     
-                    Text("Moment Search")
+                    Text("Co-Pilot Search")
                         .font(.custom("Poppins-Bold", size: 24))
                         .foregroundColor(CriticalDesign.Adaptive.textPrimary(for: colorScheme))
                 }
@@ -266,7 +266,7 @@ struct NLMomentSearchView: View {
             }
             
             VStack(spacing: 8) {
-                Text("Search Clinical Moments")
+                Text("Search Co-Pilot")
                     .font(.custom("Poppins-Bold", size: 20))
                     .foregroundColor(CriticalDesign.Adaptive.textPrimary(for: colorScheme))
                 
