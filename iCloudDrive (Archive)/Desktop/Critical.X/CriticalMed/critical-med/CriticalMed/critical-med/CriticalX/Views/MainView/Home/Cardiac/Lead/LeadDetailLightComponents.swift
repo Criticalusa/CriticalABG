@@ -35,30 +35,25 @@ struct LeadColors {
 
 // MARK: - Animated Light Background
 struct LeadDetailBackground: View {
-    @Environment(\.colorScheme) var colorScheme
     @State private var animate = false
 
     var body: some View {
         ZStack {
-            // Adaptive base background
-            if colorScheme == .dark {
-                CriticalDesign.Colors.darkCanvas
-            } else {
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        LeadColors.canvas,
-                        LeadColors.recessed,
-                        LeadColors.canvas
-                    ]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-            }
+            // Base canvas gradient
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    LeadColors.canvas,
+                    LeadColors.recessed,
+                    LeadColors.canvas
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
 
             // Subtle animated orbs
             GeometryReader { geo in
                 Circle()
-                    .fill(colorScheme == .dark ? CriticalDesign.Colors.gold.opacity(0.04) : LeadColors.navyAccent.opacity(0.04))
+                    .fill(LeadColors.navyAccent.opacity(0.04))
                     .frame(width: 300, height: 300)
                     .blur(radius: 100)
                     .offset(
@@ -90,7 +85,6 @@ struct LeadDetailBackground: View {
 
 // MARK: - Detail Header (Title + Icon)
 struct LeadDetailHeader: View {
-    @Environment(\.colorScheme) var colorScheme
     let title: String
     let subtitle: String
     let icon: String
@@ -108,29 +102,18 @@ struct LeadDetailHeader: View {
 
                 // Glass circle
                 ZStack {
-                    Group {
-                        if colorScheme == .dark {
-                            Circle()
-                                .fill(CriticalDesign.Colors.cardBlue)
-                                .frame(width: 80, height: 80)
-                        } else {
-                            ZStack {
-                                Circle()
-                                    .fill(.ultraThinMaterial)
-                                    .frame(width: 80, height: 80)
-                                Circle()
-                                    .fill(Color.white.opacity(0.6))
-                                    .frame(width: 80, height: 80)
-                            }
-                        }
-                    }
+                    Circle()
+                        .fill(.ultraThinMaterial)
+                        .frame(width: 80, height: 80)
+
+                    Circle()
+                        .fill(Color.white.opacity(0.6))
+                        .frame(width: 80, height: 80)
 
                     Circle()
                         .stroke(
                             LinearGradient(
-                                colors: colorScheme == .dark
-                                    ? [Color.white.opacity(0.08), Color.white.opacity(0.08)]
-                                    : [Color.white, Color.white.opacity(0.5)],
+                                colors: [Color.white, Color.white.opacity(0.5)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             ),
@@ -154,11 +137,11 @@ struct LeadDetailHeader: View {
 
             Text(title)
                 .font(.custom("Poppins-Bold", size: 28))
-                .foregroundColor(CriticalDesign.Adaptive.textPrimary(for: colorScheme))
+                .foregroundColor(LeadColors.textPrimary)
 
             Text(subtitle)
                 .font(.custom("Poppins-Medium", size: 15))
-                .foregroundColor(CriticalDesign.Adaptive.textSecondary(for: colorScheme))
+                .foregroundColor(LeadColors.textMuted)
         }
         .padding(.bottom, 8)
     }
@@ -166,7 +149,6 @@ struct LeadDetailHeader: View {
 
 // MARK: - Glass Content Card
 struct LeadDetailGlassCard: View {
-    @Environment(\.colorScheme) var colorScheme
     let title: String
     let icon: String
     let content: AttributedString
@@ -194,7 +176,7 @@ struct LeadDetailGlassCard: View {
 
                 Text(title)
                     .font(.custom("Poppins-SemiBold", size: 18))
-                    .foregroundColor(CriticalDesign.Adaptive.textPrimary(for: colorScheme))
+                    .foregroundColor(LeadColors.textPrimary)
 
                 Spacer()
             }
@@ -204,39 +186,41 @@ struct LeadDetailGlassCard: View {
 
             // Content
             Text(content)
-                .lineSpacing(6)
+                .lineSpacing(5)
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity)
         .background(
-            Group {
-                if colorScheme == .dark {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(CriticalDesign.Colors.cardBlue)
-                } else {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 24, style: .continuous)
-                            .fill(.ultraThinMaterial)
-                        RoundedRectangle(cornerRadius: 24, style: .continuous)
-                            .fill(Color.white.opacity(0.7))
-                    }
-                }
+            ZStack {
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(.ultraThinMaterial)
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(Color.white.opacity(0.7))
+                // Top highlight
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [Color.white.opacity(0.9), Color.white.opacity(0.3), Color.clear],
+                            startPoint: .top,
+                            endPoint: .center
+                        )
+                    )
             }
         )
         .overlay(
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(colorScheme == .dark ? CriticalDesign.Colors.goldGradient : LinearGradient(colors: [Color.white.opacity(0.8)], startPoint: .top, endPoint: .bottom), lineWidth: 1)
+                .stroke(Color.white.opacity(0.8), lineWidth: 1)
         )
-        .shadow(color: colorScheme == .dark ? .clear : Color.black.opacity(0.06), radius: 16, y: 8)
+        .shadow(color: Color.black.opacity(0.06), radius: 20, x: 0, y: 10)
+        .shadow(color: accentColor.opacity(0.06), radius: 8, x: 0, y: 4)
         .padding(.horizontal, 16)
     }
 }
 
 // MARK: - Image Card (Tappable)
 struct LeadDetailImageCard: View {
-    @Environment(\.colorScheme) var colorScheme
     let imageName: String
     let caption: String
     var onTap: () -> Void
@@ -266,41 +250,33 @@ struct LeadDetailImageCard: View {
 
             Text(caption)
                 .font(.custom("Poppins-Medium", size: 12))
-                .foregroundColor(CriticalDesign.Adaptive.textSecondary(for: colorScheme))
+                .foregroundColor(LeadColors.textMuted)
 
             Text("Tap to enlarge")
                 .font(.custom("Poppins-Regular", size: 10))
-                .foregroundColor(CriticalDesign.Adaptive.textTertiary(for: colorScheme))
+                .foregroundColor(LeadColors.textMuted.opacity(0.7))
         }
         .padding(20)
         .frame(maxWidth: .infinity)
         .background(
-            Group {
-                if colorScheme == .dark {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(CriticalDesign.Colors.cardBlue)
-                } else {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 24, style: .continuous)
-                            .fill(.ultraThinMaterial)
-                        RoundedRectangle(cornerRadius: 24, style: .continuous)
-                            .fill(Color.white.opacity(0.6))
-                    }
-                }
+            ZStack {
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(.ultraThinMaterial)
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(Color.white.opacity(0.6))
             }
         )
         .overlay(
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(colorScheme == .dark ? CriticalDesign.Colors.goldGradient : LinearGradient(colors: [Color.white.opacity(0.6)], startPoint: .top, endPoint: .bottom), lineWidth: 1)
+                .stroke(Color.white.opacity(0.6), lineWidth: 1)
         )
-        .shadow(color: colorScheme == .dark ? .clear : Color.black.opacity(0.06), radius: 15, x: 0, y: 8)
+        .shadow(color: Color.black.opacity(0.06), radius: 15, x: 0, y: 8)
         .padding(.horizontal, 16)
     }
 }
 
 // MARK: - Warning/Critical Card (Red Accent)
 struct LeadDetailWarningCard: View {
-    @Environment(\.colorScheme) var colorScheme
     let title: String
     let content: AttributedString
 
@@ -332,25 +308,18 @@ struct LeadDetailWarningCard: View {
 
             // Content
             Text(content)
-                .lineSpacing(6)
+                .lineSpacing(5)
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity)
         .background(
-            Group {
-                if colorScheme == .dark {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(CriticalDesign.Colors.cardBlue)
-                } else {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 24, style: .continuous)
-                            .fill(.ultraThinMaterial)
-                        RoundedRectangle(cornerRadius: 24, style: .continuous)
-                            .fill(LeadColors.critical.opacity(0.05))
-                    }
-                }
+            ZStack {
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(.ultraThinMaterial)
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(LeadColors.critical.opacity(0.05))
             }
         )
         .overlay(
@@ -406,42 +375,33 @@ struct LeadDetailTakeawayCard: View {
 
 // MARK: - Close Button
 struct LeadDetailCloseButton: View {
-    @Environment(\.colorScheme) var colorScheme
     var action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Image(systemName: "xmark")
                 .font(.system(size: 14, weight: .bold))
-                .foregroundColor(CriticalDesign.Adaptive.textSecondary(for: colorScheme))
+                .foregroundColor(LeadColors.textTertiary)
                 .frame(width: 36, height: 36)
                 .background(
-                    Group {
-                        if colorScheme == .dark {
-                            Circle()
-                                .fill(CriticalDesign.Colors.cardBlue)
-                        } else {
-                            ZStack {
-                                Circle()
-                                    .fill(.ultraThinMaterial)
-                                Circle()
-                                    .fill(Color.white.opacity(0.7))
-                            }
-                        }
+                    ZStack {
+                        Circle()
+                            .fill(.ultraThinMaterial)
+                        Circle()
+                            .fill(Color.white.opacity(0.7))
                     }
                 )
                 .overlay(
                     Circle()
-                        .stroke(colorScheme == .dark ? Color.white.opacity(0.08) : Color.white.opacity(0.9), lineWidth: 1)
+                        .stroke(Color.white.opacity(0.9), lineWidth: 1)
                 )
-                .shadow(color: colorScheme == .dark ? .clear : Color.black.opacity(0.08), radius: 8, x: 0, y: 4)
+                .shadow(color: Color.black.opacity(0.08), radius: 8, x: 0, y: 4)
         }
     }
 }
 
 // MARK: - Section Divider
 struct LeadDetailSectionDivider: View {
-    @Environment(\.colorScheme) var colorScheme
     let title: String
 
     var body: some View {
@@ -449,7 +409,7 @@ struct LeadDetailSectionDivider: View {
             Rectangle()
                 .fill(
                     LinearGradient(
-                        colors: [CriticalDesign.Adaptive.textTertiary(for: colorScheme).opacity(0.3), Color.clear],
+                        colors: [LeadColors.textMuted.opacity(0.3), Color.clear],
                         startPoint: .leading,
                         endPoint: .trailing
                     )
@@ -458,14 +418,14 @@ struct LeadDetailSectionDivider: View {
 
             Text(title)
                 .font(.custom("Poppins-SemiBold", size: 11))
-                .foregroundColor(CriticalDesign.Adaptive.textSecondary(for: colorScheme))
+                .foregroundColor(LeadColors.textMuted)
                 .textCase(.uppercase)
                 .tracking(2)
 
             Rectangle()
                 .fill(
                     LinearGradient(
-                        colors: [Color.clear, CriticalDesign.Adaptive.textTertiary(for: colorScheme).opacity(0.3)],
+                        colors: [Color.clear, LeadColors.textMuted.opacity(0.3)],
                         startPoint: .leading,
                         endPoint: .trailing
                     )
