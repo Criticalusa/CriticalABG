@@ -593,6 +593,7 @@ struct CriticalHomePage: View {
     
     /// UI State
     @State private var showMomentSearch = false
+    @State private var showUniversalSearch = false
     @StateObject private var userSettings = UserSettings()
     @StateObject private var subscriptionManager = SubscriptionManager()
     @ObservedObject private var patientContext = GlobalPatientContext.shared
@@ -655,7 +656,7 @@ struct CriticalHomePage: View {
     
     // MARK: Main Body View
     var body: some View {
-        NavigationView {
+        NavigationStack {
             GeometryReader { geometry in
             ZStack {
                 // MARK: - Navigation Bar Background (CardBlue)
@@ -713,39 +714,22 @@ struct CriticalHomePage: View {
                                 .animation(.easeOut(duration: 0.15), value: collapseProgress)
                             }
 
-                            // MARK: - 4. Co-Pilot Search Bar (tap to open NLMomentSearchView)
+                            // MARK: - 4. Universal Search Bar
                             Button {
                                 let haptic = UIImpactFeedbackGenerator(style: .light)
                                 haptic.impactOccurred()
-                                showMomentSearch = true
+                                showUniversalSearch = true
                             } label: {
                                 HStack(spacing: 10) {
                                     Image(systemName: "magnifyingglass")
                                         .font(.system(size: 16, weight: .medium))
                                         .foregroundColor(.secondary)
 
-                                    Text("Search or ask Co-Pilot...")
+                                    Text("Search calculators, meds, protocols...")
                                         .font(.system(size: 15))
                                         .foregroundColor(.secondary)
 
                                     Spacer()
-
-                                    // AI badge
-                                    Text("AI")
-                                        .font(.system(size: 10, weight: .bold))
-                                        .foregroundColor(.white)
-                                        .padding(.horizontal, 10)
-                                        .padding(.vertical, 4)
-                                        .background(
-                                            Capsule()
-                                                .fill(
-                                                    LinearGradient(
-                                                        colors: [CriticalDesign.Colors.accentPurple, CriticalDesign.Colors.accentBlue],
-                                                        startPoint: .leading,
-                                                        endPoint: .trailing
-                                                    )
-                                                )
-                                        )
                                 }
                                 .padding(.horizontal, 18)
                                 .padding(.vertical, 14)
@@ -945,9 +929,24 @@ struct CriticalHomePage: View {
             .sheet(isPresented: $showSettings) {
                 SettingsView(userSettings: userSettings)
             }
-            // MARK: Moment Search (wand → Ask a Question)
+            // MARK: Co-Pilot (wand → MomentsHubView)
             .sheet(isPresented: $showMomentSearch) {
-                NLMomentSearchView()
+                MomentsHubView()
+            }
+            // MARK: Universal Search
+            .sheet(isPresented: $showUniversalSearch) {
+                NavigationStack {
+                    UniversalSearchView()
+                        .navigationTitle("Search")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button("Done") {
+                                    showUniversalSearch = false
+                                }
+                            }
+                        }
+                }
             }
             // MARK: Moment Sheet
             .sheet(isPresented: $showMomentView) {
@@ -967,9 +966,9 @@ struct CriticalHomePage: View {
             }
             .animation(.spring(response: 0.35, dampingFraction: 0.8), value: isProfileCollapsed)
         }
-        .id(navigationID) // Reset NavigationView (pop to root) when this changes
+        .id(navigationID) // Reset NavigationStack (pop to root) when this changes
         .onReceive(NotificationCenter.default.publisher(for: .popHomeToRoot)) { _ in
-            navigationID = UUID() // New ID → NavigationView recreates → pops to root
+            navigationID = UUID() // New ID → NavigationStack recreates → pops to root
         }
         // Floating weight button is shown from TabBarView (on top of tab bar) so it receives touches on Home tab
     }
@@ -1066,13 +1065,9 @@ struct CriticalHomePage: View {
                 }
                 .padding(.horizontal, 20)
             }
-            .background(
-                NavigationLink(
-                    destination: selectedEmergencyDestination,
-                    isActive: $emergencyNavActive
-                ) { EmptyView() }
-                    .hidden()
-            )
+            .navigationDestination(isPresented: $emergencyNavActive) {
+                selectedEmergencyDestination
+            }
         }
     }
 
@@ -1265,13 +1260,9 @@ struct CriticalHomePage: View {
                 }
             }
             .padding(.horizontal, 20)
-            .background(
-                NavigationLink(
-                    destination: NavigationFactory.getDestinationView(for: selectedCategoryNavId),
-                    isActive: $categoryNavActive
-                ) { EmptyView() }
-                    .hidden()
-            )
+            .navigationDestination(isPresented: $categoryNavActive) {
+                NavigationFactory.getDestinationView(for: selectedCategoryNavId)
+            }
         }
     }
 
@@ -2737,7 +2728,7 @@ extension CriticalHomePage {
             case 11: ObstetricsMainView().goldNavigationTitle("OB")
             case 12: HemodynamicsMainView(isPushed: true).goldNavigationTitle("Hemodynamics")
             case 13: Procedure_ImagingMainView().goldNavigationTitle("Procedures")
-            case 14: VentManagemnetTableView().goldNavigationTitle("Vent Management")
+            case 14: VentilatorManagementHub().goldNavigationTitle("Vent Management")
             case 15: CriticalRefrencesView().goldNavigationTitle("References")
             case 16: AbbreviateionMain().goldNavigationTitle("Abbreviations")
             case 17: IVCompatibilityView().goldNavigationTitle("IV Compatibility")
